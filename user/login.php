@@ -156,7 +156,7 @@ if (isset($_SESSION['username'])) {
                                 <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
                             </form>
                             <a href="../user/forgotPassword.php" class="forgot-password-link">Forgot password?</a>
-                            <p class="login-card-footer-text">Don't have an account? <a href="../user/CreateAccount.php" class="text-reset">Register here</a></p>
+                            <p class="login-card-footer-text">Don't have an account? <a href="../user/register.php" class="text-reset">Register here</a></p>
                             <!-- <p class="login-card-footer-text">Don't have an account? <a href="../user/register.php" class="text-reset">Register here</a></p> -->
                             <nav class="login-card-footer-nav">
                                 <a href="../terms.php">Terms of use.</a>
