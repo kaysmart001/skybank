@@ -12,9 +12,9 @@
 
     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-$server = $url["heroku_6ed69e6e4461f0d"];
-$username = $url["b1cc71f50d865d"];
-$password = $url["e8db8722"];
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
 $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
