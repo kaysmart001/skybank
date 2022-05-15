@@ -149,7 +149,7 @@ $dashboard = 'active';
                     </li> -->
                     <li class="menuHover">
 
-                        <a href="../admin/Dashboard.php" class="nav-link text-left" role="button active" aria-haspopup="true" aria-expanded="false">
+                        <a href="../admin/Dashboard.php" class="nav-link text-left active" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="flaticon-bar-chart-1"></i><i class="bx bxs-dashboard ico"></i> Dashboard
                         </a>
                     </li>

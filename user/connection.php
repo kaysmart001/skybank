@@ -5,16 +5,16 @@
     error_reporting(E_ALL);
      // Defining constant php variable for local host
     
-    //  define('DB_host', 'localhost');
-    //  define('DB_username', 'root');
-    //  define('DB_password', 'root');
-    //  define('DB_name', 'SkyBank');
+     define('DB_host', 'localhost');
+     define('DB_username', 'root');
+     define('DB_password', 'root');
+     define('DB_name', 'SkyBank');
  
 
-    define('DB_host', 'nationalbankplc.org');
-    define('DB_username', 'natikplc_admin');
-    define('DB_password', 'natikplc_password');
-    define('DB_name', 'natikplc_SkyBank');
+    // define('DB_host', 'nationalbankplc.org');
+    // define('DB_username', 'natikplc_admin');
+    // define('DB_password', 'natikplc_password');
+    // define('DB_name', 'natikplc_SkyBank');
 
 //     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
