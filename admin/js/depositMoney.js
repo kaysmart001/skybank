@@ -77,7 +77,7 @@ $(document).ready(function () {
                 let AccountNo = $("#AccountNo").val();
             }
             else {
-                $("#AmountError").text("Please Enter Minimum 100 rupees");
+                $("#AmountError").text("Please Enter Minimum 100 dollars");
             }
         }
 
@@ -167,7 +167,7 @@ $(document).ready(function () {
                 });
             }
             else {
-                $("#AmountError").text("Please Enter Minimum 100 rupees");
+                $("#AmountError").text("Please Enter Minimum 100 dollars");
             }
         }
         else{

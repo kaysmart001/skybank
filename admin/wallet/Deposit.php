@@ -3,32 +3,10 @@ session_start();
 if (!isset($_SESSION['accountNo'])) {
     header("Location: ../user/login.php");
 }
-
+include "../../bankConfig.php";
 include "../connection.php";
 include "../Notification.php";
 include "../adminData.php";
-/* 
-
-set id from 1 in sql
-
-SET @autoid := 0;
-UPDATE login SET ID = @autoid := (@autoid+1);
-ALTER TABLE login AUTO_INCREMENT = 1; 
-
-127.0.0.1/skybank/customer_detail/		http://localhost/phpmyadmin/tbl_sql.php?db=skybank&table=customer_detail
- Showing rows 0 -  4 (5 total, Query took 0.0030 seconds.)
-
-SELECT
-    DATE(Create_Date) AS DATE,
-    COUNT(C_No)
-FROM
-    customer_detail
-GROUP BY
-    DATE(Create_Date)
-
-
-
-*/
 
 
 
@@ -350,6 +328,11 @@ GROUP BY
                         </a>
                     </li> -->
                     <li class="menuHover">
+                        <a href="../cards.php" class="nav-link text-left" role="button">
+                            <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-coin ico"></i>Loans Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
+                        </a>
+                    </li>
+                    <li class="menuHover">
                         <a class="nav-link text-left" role="button" href="../logout.php">
                             <i class="flaticon-map"></i><i class="bx bx-log-out ico"></i> Logout
                         </a>
@@ -472,34 +455,7 @@ GROUP BY
 
                 </div>
 
-                <footer class="footer gray_bg" style="margin-top: 8%;">
-                    <div class="container-fluid">
-                        <div class="row text-muted">
-                            <div class="col-6 text-left">
-                                <p class="mb-0">
-                                    <a href="../../index.php" class="text-muted light"><strong><?php echo $bank_name;?>
-                                        </strong></a> &copy
-                                </p>
-                            </div>
-                            <div class="col-6 text-right">
-                                <ul class="list-inline">
-                                    <!-- <li class="footer-item">
-                                        <a class="text-muted light" href="#">Support</a>
-                                    </li>
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="#">Help Center</a>
-                                    </li> -->
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="../../privacypolicy.html">Privacy</a>
-                                    </li>
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="../../terms.html">Terms</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                <?php include "../footer.php"; ?>
 
                 <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
                     <div class="modal-dialog loadingModal modal-lg">

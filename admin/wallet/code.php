@@ -8,7 +8,7 @@ if (isset($_POST['AcNo'])) {
 
     $query = "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE customer_detail.Account_No = '$AccountNo'";
 
-    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+    $result = mysqli_query($conn, $query) or die(mysqli_error($conn)." fiecond");
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $Fname = $row['C_First_Name'];
@@ -51,7 +51,7 @@ if (isset($_POST['AcState'])) {
 
     $query = "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE customer_detail.Account_No = '$AccountNo'";
 
-    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+    $result = mysqli_query($conn, $query) or die(mysqli_error($cecond));
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $Status = $row['Status'];
@@ -71,7 +71,7 @@ if (isset($_POST['DepositAc'])) {
 
         // mysqli_begin_transaction($conn, MYSQLI_TRANS_START_READ_ONLY);
 
-        $Result = mysqli_query($conn, "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE customer_detail.Account_No = '$AccountNo'") or die(mysqli_error($conn));
+        $Result = mysqli_query($conn, "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE customer_detail.Account_No = '$AccountNo'") or die(mysqli_error($conn)." Second");
         if (mysqli_num_rows($Result) > 0) {
 
             while ($row = mysqli_fetch_assoc($Result)) {
@@ -90,14 +90,14 @@ if (isset($_POST['DepositAc'])) {
                 // Check How to roll back perform testing and send email both side
 
                 try {
-
+                    $date = date("dMY");
                     mysqli_begin_transaction($conn);
 
-                    mysqli_query($conn, "UPDATE accounts SET Balance='$total' WHERE AccountNo = '$AccountNo'") or die(mysqli_error($conn));
-                    mysqli_query($conn, "INSERT INTO transaction(AccountNo, FAccountNo, Name, Amount,Status, ProfileColor, Credit, Debit) VALUES ('$AccountNo', 'NA','$SenderName', '$Amount','Credited', 'blue', '$Amount', '0.0')") or die(mysqli_error($conn));
+                    mysqli_query($conn, "UPDATE accounts SET `Balance`='$total' WHERE `AccountNo` = '$AccountNo'") or die(mysqli_error($conn));
+                    mysqli_query($conn, "INSERT INTO transaction(`AccountNo`, `FAccountNo`, `Name`, `Amount`, `Date`,`Status`, `ProfileColor`, `Credit`, `Debit`) VALUES ('$AccountNo', 'NA','$SenderName', '$Amount', NOW() ,'Credited', 'blue', '$Amount', '0.0')") or die(mysqli_error($conn)." Second");
                     mysqli_commit($conn);
 
-                    $date = date("d/m/Y");
+                    // $date = now();
                     $masked =  str_pad(substr($AccountNo, -4), strlen($AccountNo), 'X', STR_PAD_LEFT);
                     // echo $REmail." ".$RName." ".$Amount." ".$Rtotal." ".$date." ".$masked;
 
@@ -123,7 +123,7 @@ if (isset($_POST['WAcNo'])) {
 
     $query = "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE customer_detail.Account_No = '$AccountNo'";
 
-    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+    $result = mysqli_query($conn, $query) or die(mysqli_error($conn)." Some");
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $Fname = $row['C_First_Name'];
@@ -166,7 +166,7 @@ if (isset($_POST['WAcState'])) {
 
     $query = "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE customer_detail.Account_No = '$AccountNo'";
 
-    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+    $result = mysqli_query($conn, $query) or die(mysqli_error($conn)." Some");
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $Status = $row['Status'];
@@ -190,7 +190,7 @@ if (isset($_POST['WDepositAc'])) {
 
         // mysqli_begin_transaction($conn, MYSQLI_TRANS_START_READ_ONLY);
 
-        $Result = mysqli_query($conn, "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE customer_detail.Account_No = '$AccountNo'") or die(mysqli_error($conn));
+        $Result = mysqli_query($conn, "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE customer_detail.Account_No = '$AccountNo'") or die(mysqli_error($conn)." Some");
         if (mysqli_num_rows($Result) > 0) {
 
             while ($row = mysqli_fetch_assoc($Result)) {
@@ -215,7 +215,7 @@ if (isset($_POST['WDepositAc'])) {
 
                         mysqli_begin_transaction($conn);
                         $minusAmount = "-" . $Amount;
-                        mysqli_query($conn, "UPDATE accounts SET Balance='$total' WHERE AccountNo = '$AccountNo'") or die(mysqli_error($conn));
+                        mysqli_query($conn, "UPDATE accounts SET Balance='$total' WHERE AccountNo = '$AccountNo'") or die(mysqli_error($conn)." Some");
                         mysqli_query($conn, "INSERT INTO transaction(AccountNo, FAccountNo, Name, Amount,Status, ProfileColor, Credit, Debit) VALUES ('$AccountNo', 'NA','$SenderName', '$minusAmount','Debited','blue', '0.0', '$Amount')");
                         mysqli_commit($conn);
 

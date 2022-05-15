@@ -1,6 +1,7 @@
 <?php
 include "../admin/connection.php";
 include "../mail/TransactionMail.php";
+include "../bankConfig.php";
 
 if (isset($_POST['CAccountNo'])) {
     $AccountNo = $_POST['CAccountNo'];
@@ -12,7 +13,6 @@ if (isset($_POST['CAccountNo'])) {
     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            
             $Fname = $row['C_First_Name'];
             $Lname = $row['C_Last_Name'];
             $Faname = $row['C_Father_Name'];
@@ -89,26 +89,37 @@ if (isset($_POST['done'])) {
 
 // Debit Cards
 
-// Check Debit card Code
-
-if (isset($_POST['DebitCardCheck'])) {
-    $AccountNo = $_POST['DebitCardCheck'];
-    $issuedDate = date('d/m/y');
-    $ExpiryDate = date('m/y', strtotime('+10 years'));
-    $query = "UPDATE cards SET Status = 'Active', IssuedDate = '$issuedDate', ExpiryDate = '$ExpiryDate', Verified = 'Yes' WHERE AccountNo = '$AccountNo'";
-    mysqli_query($conn, $query) or die(mysqli_error($conn));
-    echo "Success";
-}
 
 // Reject Debit card Code
 if (isset($_POST['DebitCardReject'])) {
     $AccountNo = $_POST['DebitCardReject'];
-
+    
     $query = "DELETE FROM cards WHERE AccountNo = '$AccountNo'";
     mysqli_query($conn, $query) or die(mysqli_error($conn));
     echo "Success";
 }
 
+// Grant loan
+
+if (isset($_POST['ApproveLoan'])) {
+    $AccountNo = $_POST['ApproveLoan'];
+    // $issuedDate = date('d/m/y');
+
+    $query = "SELECT * FROM loans WHERE `AccountNo`='$AccountNo'";
+    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+    if (mysqli_num_rows($result) > 0) {
+
+        $row = mysqli_fetch_assoc($result);
+
+        $loanTerm = $row['loanTerm'];
+        $Amount = $row['Amount'];
+        $Payment = ($Amount * $loanTerm * $rate)/100;
+        $dueDate = date('d/m/y', strtotime('+{$loanTerm} years'));
+        $query = "UPDATE loans SET Status = 'Approved', IssuedDate = '$issuedDate', dueDate = '$dueDate', loanTerm = '$loanTerm', `Payment` = '$Payment',  WHERE AccountNo = '$AccountNo'";
+        mysqli_query($conn, $query) or die(mysqli_error($conn));
+        echo "Success";
+    }
+}
 // TransferMoney / SenderAccount
 
 if (isset($_POST['SenderAcNo'])) {
@@ -303,7 +314,7 @@ if (isset($_POST['TSenderAc'])) {
                 }
             }
         } else {
-            echo "Transaction Fail minimum amount required 100 rs";
+            echo "Transaction Fail minimum amount required $100";
         }
     }
 }

@@ -49,7 +49,7 @@ GROUP BY
     <!-- Favicons -->
     <link href="../../assets/img/favicon-32x32.png" rel="icon">
     <link href="../../assets/img/apple-icon-180x180.png" rel="apple-touch-icon">
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -433,34 +433,7 @@ GROUP BY
 
                 </div>
 
-                <footer class="footer gray_bg">
-                    <div class="container-fluid">
-                        <div class="row text-muted">
-                            <div class="col-6 text-left">
-                                <p class="mb-0">
-                                    <a href="../../index.php" class="text-muted light"><strong><?php echo $bank_name; ?>
-                                        </strong></a> &copy
-                                </p>
-                            </div>
-                            <div class="col-6 text-right">
-                                <ul class="list-inline">
-                                    <!-- <li class="footer-item">
-                                        <a class="text-muted light" href="#">Support</a>
-                                    </li>
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="#">Help Center</a>
-                                    </li> -->
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="../../privacypolicy.html">Privacy</a>
-                                    </li>
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="../../terms.html">Terms</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                <?php include "../footer.php"; ?>
 
             </div>
         </div>

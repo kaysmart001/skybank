@@ -178,7 +178,151 @@ include "../admin/adminData.php";
         <div class="overlay"></div>
 
         <!-- Sidebar -->
-        <?php include "./sidebar.php"; ?>
+        <nav class="fixed-top align-top" id="sidebar-wrapper" role="navigation">
+            <div class="simplebar-content" style="padding: 0px;">
+                <a class="sidebar-brand" href="../index.php">
+                    <span class="align-middle"><?php echo $bank_name; ?></span>
+                </a>
+
+                <ul class="navbar-nav align-self-stretch">
+
+                    <!-- <li class="sidebar-header">
+                        Pages
+                    </li> -->
+                    <li class="menuHover">
+
+                        <a href="../admin/Dashboard.php" class="nav-link text-left" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="flaticon-bar-chart-1"></i><i class="bx bxs-dashboard ico"></i> Dashboard
+                        </a>
+                    </li>
+
+                    <li class="has-sub menuHover">
+                        <!-- this link href="collapseExample1" shows submenue  -->
+                        <a class="nav-link collapsed text-left" href="#collapseExample1" role="button" data-toggle="collapse">
+                            <i class="flaticon-user"></i> <i class="bx bxs-wallet-alt Profile ico"></i> Wallet
+                        </a>
+                        <!-- id is a collapseExample1 -->
+                        <div class="collapse menu mega-dropdown" id="collapseExample1">
+                            <div class="dropmenu" aria-labelledby="navbarDropdown">
+                                <div class="container-fluid ">
+                                    <div class="row">
+                                        <div class="col-lg-12 px-2">
+                                            <div class="submenu-box">
+                                                <ul class="list-unstyled m-0">
+                                                    <li><a href="../admin/wallet/Withdraw.php">Withdraw Money</a></li>
+                                                    <li><a href="../admin/wallet/Deposit.php">Deposit Money</a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="menuHover">
+                        <a href="../admin/TransferMoney.php" class="nav-link text-left" role="button">
+                            <i class="flaticon-bar-chart-1"></i><i class="bx bx-transfer ico"></i> Transfer
+                        </a>
+                    </li>
+
+                    <li class="has-sub menuHover">
+                        <a class="nav-link collapsed text-left" href="#collapseExample2" role="button" data-toggle="collapse">
+                            <i class="flaticon-user"></i> <i class="bx bx-user-circle Profile ico"></i> Customer Accounts
+                        </a>
+                        <!-- Show class show dropdown by default -->
+                        <div class="collapse menu mega-dropdown " id="collapseExample2">
+                            <div class="dropmenu" aria-labelledby="navbarDropdown">
+                                <div class="container-fluid ">
+                                    <div class="row">
+                                        <div class="col-lg-12 px-2">
+                                            <div class="submenu-box">
+                                                <ul class="list-unstyled m-0">
+                                                    <!-- active class for helight on which page we are -->
+                                                    <!-- <li><a href="../admin/accounts/OpenAccount.php">Open Account</a></li> -->
+                                                    <li><a href="../admin/accounts/EditAccount.php">Edit Account</a></li>
+                                                    <li><a href="../admin/accounts/ActivateAccount.php">Activate Account</a></li>
+                                                    <li><a href="../admin/accounts/DeactivateAccount.php">Deactivate Account</a></li>
+                                                    <li><a href="../admin/accounts/CloseAccount.php">Close Account</a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="menuHover box-icon">
+                        <a class="nav-link text-left " role="button">
+                            <i class="flaticon-bar-chart-1"></i> <i class="bx bx-check-circle ico"></i> Verify Account <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $count; ?> new</span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="menuHover" id="Transaction">
+                        <a class="nav-link text-left" role="button">
+                            <i class="flaticon-bar-chart-1"></i> <i class="bx bx-history ico"></i> Transaction
+                        </a>
+                    </li> -->
+
+
+
+
+
+
+                    <!-- <li class="sidebar-header">
+                        tools and component
+                    </li> -->
+
+                    <!-- <li class="menuHover box-icon">
+                        <a class="nav-link text-left" role="button">
+                            <i class="flaticon-bar-chart-1"></i> <i class="bx bx-dollar-circle ico"></i>Insurance Requests
+                        </a>
+                    </li>
+
+                    <li class="menuHover box-icon">
+                        <a class="nav-link text-left" role="button">
+                            <i class="flaticon-bar-chart-1"></i><i class="bx bxs-coin ico"></i> Loan Requests
+                        </a>
+                    </li> -->
+                    <li class="menuHover">
+                        <a href="../admin/cards.php" class="nav-link text-left" role="button">
+                            <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-credit-card ico"></i>Cards Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
+                        </a>
+                    </li>
+                    
+                    <li class="menuHover">
+                        <a href="../admin/loans.php" class="nav-link text-left active" role="button">
+                            <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-coin ico"></i>Loans Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="sidebar-header">
+                        tools and component
+                    </li> -->
+                    <!-- <li class="menuHover">
+                        <a class="nav-link text-left" role="button">
+                            <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-cog ico"></i> Setting
+                        </a>
+                    </li> -->
+                    <li class="menuHover">
+                        <a class="nav-link text-left" role="button" href="../admin/logout.php">
+                            <i class="flaticon-map"></i><i class="bx bx-log-out ico"></i> Logout
+                        </a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+
+        </nav>
         <!-- /#sidebar-wrapper -->
 
 
@@ -199,7 +343,7 @@ include "../admin/adminData.php";
                             <div class="col-md-12 mt-lg-4 mt-4">
                                 <!-- Page Heading -->
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 class="h3 mb-0 light">Verify Debit Cards</h1>
+                                    <h1 class="h3 mb-0 light">Loan Requests</h1>
                                     <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm light btn-custo "><i class="bx bx-log-out-circle ico"></i>
                                         Logout</a> -->
                                 </div>
@@ -217,7 +361,7 @@ include "../admin/adminData.php";
 
                                                 <?php
 
-                                                $query = "SELECT * FROM loans WHERE `Granted`='No'";
+                                                $query = "SELECT * FROM loans WHERE `Status`='Pending'";
                                                 $result = mysqli_query($conn, $query) or die("query fail");
 
                                                 if (mysqli_num_rows($result) > 0) {
@@ -231,9 +375,8 @@ include "../admin/adminData.php";
                                                                 <tr>
                                                                     <th scope="col">#ID</th>
                                                                     <th scope="col">Account No</th>
-                                                                    <th scope="col">Name</th>
-                                                                    <th scope="col">Loan ID</th>
-                                                                    <th scope="col">Amount</th>
+                                                                    <th scope="col">Amount Requested</th>
+                                                                    <th scope="col">Amount </th>
                                                                     <th scope="col">Status</th>
                                                                     <th scope="col">Grant Loan</th>
                                                                     <th scope="col">Reject <ul class="list-group">
@@ -256,9 +399,9 @@ include "../admin/adminData.php";
 
                                                                         <td class="light"><?php echo $row['AccountNo']; ?></td>
 
-                                                                        <td class="light"><?php echo $row['Name']; ?></td>
+                                                                        <td class="light"><?php echo $row['LoanID']; ?></td>
 
-                                                                        <td class="light"><?php echo $row['CardNo']; ?></td>
+                                                                        <td class="light"><?php echo $row['Amount']; ?></td>
 
                                                                         <td class="light"><?php echo $row['cvv']; ?></td>
 
@@ -281,7 +424,7 @@ include "../admin/adminData.php";
                                                             } else {
 
                                                                 ?>
-                                                                <h1 class="light" style="text-align: center;">No Debit Card for Verification</h1>
+                                                                <h1 class="light" style="text-align: center;">No loan requests!</h1>
 
                                                             <?php
                                                             }
@@ -313,35 +456,7 @@ include "../admin/adminData.php";
 
                 </div>
 
-                <footer class="footer gray_bg">
-                    <div class="container-fluid">
-                        <div class="row text-muted">
-                            <div class="col-6 text-left">
-                                <p class="mb-0">
-                                    <a href="../index.php" class="text-muted light"><strong><?php echo $bank_name; ?>
-                                        </strong></a> &copy
-                                </p>
-                            </div>
-                            <div class="col-6 text-right">
-                                <ul class="list-inline">
-                                    <!-- <li class="footer-item">
-                                        <a class="text-muted light" href="#">Support</a>
-                                    </li>
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="#">Help Center</a>
-                                    </li> -->
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="../privacypolicy.html">Privacy</a>
-                                    </li>
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="../terms.html">Terms</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-
+                <?php include "./footer.php"; ?>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
@@ -364,6 +479,7 @@ include "../admin/adminData.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
 
     <script src="../admin/js/cards.js"></script>
+    <script src="../admin/js/loans.js"></script>
     <script>
         $('#bar').click(function() {
             $(this).toggleClass('open');

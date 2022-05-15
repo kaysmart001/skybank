@@ -328,6 +328,11 @@ GROUP BY
                         </a>
                     </li> -->
                     <li class="menuHover">
+                        <a href="../admin/loans.php" class="nav-link text-left" role="button">
+                            <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-coin ico"></i>Loans Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
+                        </a>
+                    </li>
+                    <li class="menuHover">
                         <a class="nav-link text-left" role="button" href="../admin/logout.php">
                             <i class="flaticon-map"></i><i class="bx bx-log-out ico"></i> Logout
                         </a>

@@ -4,7 +4,7 @@ if (!isset($_SESSION['accountNo'])) {
     header("Location: ../user/login.php");
 }
 
-include "../../bankConfig.php";
+include "../bankConfig.php";
 include '../user/connection.php';
 include "../admin/Notification.php";
 include "../admin/adminData.php";
@@ -73,7 +73,6 @@ GROUP BY
 
 
 */
-$dashboard = 'active';
 ?>
 
 
@@ -217,7 +216,7 @@ $dashboard = 'active';
                     </li>
 
                     <li class="menuHover box-icon">
-                        <a class="nav-link text-left " role="button">
+                        <a href="./VerifyAccount.php" class="nav-link text-left " role="button">
                             <i class="flaticon-bar-chart-1"></i> <i class="bx bx-check-circle ico"></i> Verify Account <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $count; ?> new</span>
                         </a>
                     </li>
@@ -255,7 +254,7 @@ $dashboard = 'active';
                     </li>
                     
                     <li class="menuHover">
-                        <a href="../admin/cards.php" class="nav-link text-left" role="button">
+                        <a href="../admin/loans.php" class="nav-link text-left" role="button">
                             <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-credit-card ico"></i>Loans Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
                         </a>
                     </li>
@@ -671,34 +670,7 @@ $dashboard = 'active';
 
                 </div>
 
-                <footer class="footer gray_bg">
-                    <div class="container-fluid">
-                        <div class="row text-muted">
-                            <div class="col-6 text-left">
-                                <p class="mb-0">
-                                    <a href="../index.php" class="text-muted light"><strong><?php echo $bank_name; ?>
-                                        </strong></a> &copy
-                                </p>
-                            </div>
-                            <div class="col-6 text-right">
-                                <ul class="list-inline">
-                                    <!-- <li class="footer-item">
-                                        <a class="text-muted light" href="#">Support</a>
-                                    </li>
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="#">Help Center</a>
-                                    </li> -->
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="../privacypolicy.php">Privacy</a>
-                                    </li>
-                                    <li class="footer-item">
-                                        <a class="text-muted light" href="../terms.php">Terms</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                <?php include "./footer.php"; ?>
 
 
             </div>

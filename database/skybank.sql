@@ -60,6 +60,25 @@ INSERT INTO `accounts` (`id`, `AccountNo`, `Balance`, `SavingBalance`, `SavingTa
 -- Table structure for table `cards`
 --
 
+CREATE TABLE `loans` (
+  `srNo` int(11) NOT NULL,
+  `AccountNo` varchar(12) NOT NULL,
+  `Amount` int NOT NULL,
+  `Payment` int NOT NULL,
+  `loanTerm` int NOT NULL,
+  `requestedDate` DATE NOT NULL,
+  `issuedDate` DATE NOT NULL,
+  `dueDate` DATE NOT NULL,
+  `Status` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `loans`
+--
+
+
+
+
 CREATE TABLE `cards` (
   `srNo` int(11) NOT NULL,
   `AccountNo` varchar(12) NOT NULL,
@@ -75,7 +94,6 @@ CREATE TABLE `cards` (
 --
 -- Dumping data for table `cards`
 --
-
 INSERT INTO `cards` (`srNo`, `AccountNo`, `Name`, `CardNo`, `cvv`, `IssuedDate`, `ExpiryDate`, `Status`, `Verified`) VALUES
 (16, '410211106420', 'HARRY SHRIVASTAV', '0273121091056041', 743, '31/07/21', '07/31', 'Active', 'Yes'),
 (19, '525211930120', 'KUNAL BARI', '5273121092425052', 542, '', '', 'Inactive', 'No'),
