@@ -4,10 +4,11 @@ if (!isset($_SESSION['accountNo'])) {
     header("Location: ../user/login.php");
 }
 
+include "../bankConfig.php";
 include "../admin/connection.php";
 include "../admin/Notification.php";
 include "../admin/adminData.php";
-/* 
+/*
 
 set id from 1 in sql
 
@@ -45,7 +46,7 @@ GROUP BY
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Verify Account Sky Bank</title>
+    <title>Verify Account <?php echo $bank_name; ?></title>
 
     <!-- Favicons -->
     <link href="../assets/img/favicon-32x32.png" rel="icon">
@@ -203,7 +204,7 @@ GROUP BY
         <nav class="fixed-top align-top" id="sidebar-wrapper" role="navigation">
             <div class="simplebar-content" style="padding: 0px;">
                 <a class="sidebar-brand" href="../index.php">
-                    <span class="align-middle">SKY BANK</span>
+                    <span class="align-middle"><?php echo $bank_name; ?></span>
                 </a>
 
                 <ul class="navbar-nav align-self-stretch">
@@ -497,7 +498,7 @@ GROUP BY
                         <div class="row text-muted">
                             <div class="col-6 text-left">
                                 <p class="mb-0">
-                                    <a href="../index.php" class="text-muted light"><strong>Sky Bank
+                                    <a href="../index.php" class="text-muted light"><strong><?php echo $bank_name; ?>
                                         </strong></a> &copy
                                 </p>
                             </div>

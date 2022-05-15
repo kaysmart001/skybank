@@ -4,6 +4,7 @@ if (!isset($_SESSION['accountNo'])) {
     header("Location: ../user/login.php");
 }
 
+include '../bankConfig.php';
 include "../admin/connection.php";
 include "../admin/Notification.php";
 include "../admin/adminData.php";
@@ -49,7 +50,7 @@ GROUP BY
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <title>Transfer Sky Bank</title>
+    <title>Transfer <?php echo $bank_name; ?></title>
 
     <!-- Favicons -->
     <link href="../assets/img/favicon-32x32.png" rel="icon">
@@ -61,7 +62,7 @@ GROUP BY
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Sky Bank Dashboard</title>
+    <title><?php echo $bank_name; ?> Dashboard</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!--fontawesome-->
@@ -222,145 +223,7 @@ GROUP BY
         <div class="overlay"></div>
 
         <!-- Sidebar -->
-        <nav class="fixed-top align-top" id="sidebar-wrapper" role="navigation">
-            <div class="simplebar-content" style="padding: 0px;">
-                <a class="sidebar-brand" href="../index.php">
-                    <span class="align-middle">SKY BANK</span>
-                </a>
-
-                <ul class="navbar-nav align-self-stretch">
-
-                    <!-- <li class="sidebar-header">
-                        Pages
-                    </li> -->
-                    <li class="menuHover">
-
-                        <a href="../admin/Dashboard.php" class="nav-link text-left" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="flaticon-bar-chart-1"></i><i class="bx bxs-dashboard ico"></i> Dashboard
-                        </a>
-                    </li>
-
-                    <li class="has-sub menuHover">
-                        <!-- this link href="collapseExample1" shows submenue  -->
-                        <a class="nav-link collapsed text-left" href="#collapseExample1" role="button" data-toggle="collapse">
-                            <i class="flaticon-user"></i> <i class="bx bxs-wallet-alt Profile ico"></i> Wallet
-                        </a>
-                        <!-- id is a collapseExample1 -->
-                        <div class="collapse menu mega-dropdown" id="collapseExample1">
-                            <div class="dropmenu" aria-labelledby="navbarDropdown">
-                                <div class="container-fluid ">
-                                    <div class="row">
-                                        <div class="col-lg-12 px-2">
-                                            <div class="submenu-box">
-                                                <ul class="list-unstyled m-0">
-                                                    <li><a href="../admin/wallet/Withdraw.php">Withdraw Money</a></li>
-                                                    <li><a href="../admin/wallet/Deposit.php">Deposit Money</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-
-                    <li class="menuHover">
-                        <a href="../admin/TransferMoney.php" class=" active nav-link text-left" role="button">
-                            <i class="flaticon-bar-chart-1"></i><i class="bx bx-transfer ico"></i> Transfer
-                        </a>
-                    </li>
-
-                    <li class="has-sub menuHover">
-                        <a class="nav-link collapsed text-left" href="#collapseExample2" role="button" data-toggle="collapse">
-                            <i class="flaticon-user"></i> <i class="bx bx-user-circle Profile ico"></i> Customer Accounts
-                        </a>
-                        <!-- Show class show dropdown by default -->
-                        <div class="collapse menu mega-dropdown " id="collapseExample2">
-                            <div class="dropmenu" aria-labelledby="navbarDropdown">
-                                <div class="container-fluid ">
-                                    <div class="row">
-                                        <div class="col-lg-12 px-2">
-                                            <div class="submenu-box">
-                                                <ul class="list-unstyled m-0">
-                                                    <!-- active class for helight on which page we are -->
-                                                    <!-- <li><a href="../admin/accounts/OpenAccount.php">Open Account</a></li> -->
-                                                    <li><a href="../admin/accounts/EditAccount.php">Edit Account</a></li>
-                                                    <li><a href="../admin/accounts/ActivateAccount.php">Activate Account</a></li>
-                                                    <li><a href="../admin/accounts/DeactivateAccount.php">Deactivate Account</a></li>
-                                                    <li><a href="../admin/accounts/CloseAccount.php">Close Account</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="menuHover box-icon">
-                        <a href="../admin/VerifyAccount.php" class="nav-link text-left" role="button">
-                            <i class="flaticon-bar-chart-1"></i> <i class="bx bx-check-circle ico"></i> Verify Account <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $count; ?> new</span>
-                        </a>
-                    </li>
-
-                    <!-- <li class="menuHover" id="Transaction">
-                        <a class="nav-link text-left" role="button">
-                            <i class="flaticon-bar-chart-1"></i> <i class="bx bx-history ico"></i> Transaction
-                        </a>
-                    </li> -->
-
-
-
-
-
-
-                    <!-- <li class="sidebar-header">
-                        tools and component
-                    </li> -->
-                    <!-- 
-                    <li class="menuHover box-icon">
-                        <a class="nav-link text-left" role="button">
-                            <i class="flaticon-bar-chart-1"></i> <i class="bx bx-dollar-circle ico"></i>Insurance Requests
-                        </a>
-                    </li>
-
-                    <li class="menuHover box-icon">
-                        <a class="nav-link text-left" role="button">
-                            <i class="flaticon-bar-chart-1"></i><i class="bx bxs-coin ico"></i> Loan Requests
-                        </a>
-                    </li>-->
-                   <li class="menuHover">
-                        <a href="../admin/cards.php" class="nav-link text-left" role="button">
-                            <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-credit-card ico"></i>Cards Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
-                        </a>
-                    </li>  
-
-                    <!-- <li class="sidebar-header">
-                        tools and component
-                    </li> -->
-                    <!-- <li class="menuHover">
-                        <a class="nav-link text-left" role="button">
-                            <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-cog ico"></i> Setting
-                        </a>
-                    </li> -->
-                    <li class="menuHover">
-                        <a class="nav-link text-left" role="button" href="../admin/logout.php">
-                            <i class="flaticon-map"></i><i class="bx bx-log-out ico"></i> Logout
-                        </a>
-                    </li>
-
-                </ul>
-
-
-            </div>
-
-
-        </nav>
+        <?php include './sidebar.php'; ?>
         <!-- /#sidebar-wrapper -->
 
 
@@ -372,29 +235,7 @@ GROUP BY
 
                 <div class="container-fluid p-0 px-lg-0 px-md-0">
                     <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light gray_bg my-navbar">
-
-                        <!-- Sidebar Toggle (Topbar) -->
-                        <div type="button" id="bar" class="nav-icon1 hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
-                            <span class="light_bg"></span>
-                            <span class="light_bg"></span>
-                            <span class="light_bg"></span>
-                        </div>
-
-                        <!-- Topbar Navbar -->
-                        <ul class="navbar-nav ml-auto">
-
-                            <!-- Nav Item - User Information -->
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#" role="button">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $Admin ?></span>
-                                    <img id="AdminDropdown" class="img-profile rounded-circle" src="<?php echo $AdminProfile; ?>">
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </nav>
+                    <?php include './topbar.php'; ?>
                     <!-- End of Topbar -->
 
                     <!-- Begin Page Content -->
@@ -441,7 +282,7 @@ GROUP BY
                                                     <!-- Amount -->
                                                     <div class="input-group mb-1 mt-5">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text gray_bg light" id="inputGroup-sizing-default"><i class='bx bx-rupee'></i></span>
+                                                            <span class="input-group-text gray_bg light" id="inputGroup-sizing-default"><i class='bx bx-dollar'></i></span>
                                                         </div>
                                                         <input id="Amount" type="tel" class="form-control gray_bg light" aria-label="Default" placeholder="Enter Amount..." aria-describedby="inputGroup-sizing-default">
 
@@ -479,7 +320,7 @@ GROUP BY
                         <div class="row text-muted">
                             <div class="col-6 text-left">
                                 <p class="mb-0">
-                                    <a href="../index.php" class="text-muted light"><strong>Sky Bank
+                                    <a href="../index.php" class="text-muted light"><strong><?php echo $bank_name; ?>
                                         </strong></a> &copy
                                 </p>
                             </div>

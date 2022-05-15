@@ -8,29 +8,6 @@ include "../bankConfig.php";
 include "../admin/connection.php";
 include "../admin/Notification.php";
 include "../admin/adminData.php";
-/* 
-
-set id from 1 in sql
-
-SET @autoid := 0;
-UPDATE login SET ID = @autoid := (@autoid+1);
-ALTER TABLE login AUTO_INCREMENT = 1; 
-
-127.0.0.1/skybank/customer_detail/		http://localhost/phpmyadmin/tbl_sql.php?db=skybank&table=customer_detail
- Showing rows 0 -  4 (5 total, Query took 0.0030 seconds.)
-
-SELECT
-    DATE(Create_Date) AS DATE,
-    COUNT(C_No)
-FROM
-    customer_detail
-GROUP BY
-    DATE(Create_Date)
-
-
-
-*/
-
 
 
 
@@ -38,7 +15,7 @@ GROUP BY
 ?>
 
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -213,29 +190,7 @@ GROUP BY
 
                 <div class="container-fluid p-0 px-lg-0 px-md-0">
                     <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light gray_bg my-navbar">
-
-                        <!-- Sidebar Toggle (Topbar) -->
-                        <div type="button" id="bar" class="nav-icon1 hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
-                            <span class="light_bg"></span>
-                            <span class="light_bg"></span>
-                            <span class="light_bg"></span>
-                        </div>
-
-                        <!-- Topbar Navbar -->
-                        <ul class="navbar-nav ml-auto">
-
-                            <!-- Nav Item - User Information -->
-                            <li class="nav-item ">
-                                <a class="nav-link " href="#" role="button">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $Admin ?></span>
-                                    <img id="AdminDropdown" class="img-profile rounded-circle" src="<?php echo $AdminProfile; ?>">
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </nav>
+                    <?php include "./topbar.php"; ?>
                     <!-- End of Topbar -->
 
                     <!-- Begin Page Content -->
@@ -262,7 +217,7 @@ GROUP BY
 
                                                 <?php
 
-                                                $query = "SELECT * FROM cards WHERE Verified='No'";
+                                                $query = "SELECT * FROM loans WHERE `Granted`='No'";
                                                 $result = mysqli_query($conn, $query) or die("query fail");
 
                                                 if (mysqli_num_rows($result) > 0) {
@@ -277,11 +232,14 @@ GROUP BY
                                                                     <th scope="col">#ID</th>
                                                                     <th scope="col">Account No</th>
                                                                     <th scope="col">Name</th>
-                                                                    <th scope="col">D-card No</th>
-                                                                    <th scope="col">CVV No</th>
+                                                                    <th scope="col">Loan ID</th>
+                                                                    <th scope="col">Amount</th>
                                                                     <th scope="col">Status</th>
-                                                                    <th scope="col">Verify Account</th>
-                                                                    <th scope="col">Reject Account</th>
+                                                                    <th scope="col">Grant Loan</th>
+                                                                    <th scope="col">Reject <ul class="list-group">
+                                                                        <a class="list-group-item list-group-item-action active" href="#">Text</a>
+                                                                        <a class="list-group-item list-group-item-action disabled" href="#" tabindex="-1" aria-disabled="true">Disabled item</a>
+                                                                    </ul></th>
 
                                                                 </tr>
                                                             </thead>
