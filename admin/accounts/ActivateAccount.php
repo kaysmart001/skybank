@@ -13,7 +13,7 @@ include "../adminData.php";
 
 set id from 1 in sql
 
-SET @autoid := 0;
+SET @autoid := 0;../../assets/vendor/bootstrap-icons/index.php
 UPDATE login SET ID = @autoid := (@autoid+1);
 ALTER TABLE login AUTO_INCREMENT = 1; 
 
@@ -192,7 +192,7 @@ GROUP BY
                     </li> -->
 
                    <li class="menuHover">
-                        <a href="../admin/cards.php" class="nav-link text-left" role="button">
+                        <a href="../cards.php" class="nav-link text-left" role="button">
                             <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-credit-card ico"></i>Cards Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
                         </a>
                     </li> 
@@ -473,10 +473,10 @@ GROUP BY
                                         <a class="text-muted light" href="#">Help Center</a>
                                     </li> -->
                                     <li class="footer-item">
-                                        <a class="text-muted light" href="../../privacypolicy.html">Privacy</a>
+                                        <a class="text-muted light" href="../../privacypolicy.php">Privacy</a>
                                     </li>
                                     <li class="footer-item">
-                                        <a class="text-muted light" href="../../terms.html">Terms</a>
+                                        <a class="text-muted light" href="../../terms.php">Terms</a>
                                     </li>
                                 </ul>
                             </div>

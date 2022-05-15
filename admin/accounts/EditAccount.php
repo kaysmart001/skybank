@@ -4,6 +4,8 @@ if (!isset($_SESSION['accountNo'])) {
     header("Location: /user/login.php");
 }
 unset($_SESSION['EditAccountNo']);
+
+include "../../bankConfig.php";
 include "../connection.php";
 include "../Notification.php";
 include "../adminData.php";
@@ -42,7 +44,7 @@ GROUP BY
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Edit Account Sky Bank</title>
+    <title>Edit Account <?php echo $bank_name; ?></title>
 
     <!-- Favicons -->
     <link href="../../assets/img/favicon-32x32.png" rel="icon">
@@ -53,7 +55,7 @@ GROUP BY
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Sky Bank Dashboard</title>
+    <title><?php echo $bank_name; ?> Dashboard</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!--fontawesome-->
@@ -92,7 +94,7 @@ GROUP BY
         <nav class="fixed-top align-top" id="sidebar-wrapper" role="navigation">
             <div class="simplebar-content" style="padding: 0px;">
                 <a class="sidebar-brand" href="../../index.php">
-                    <span class="align-middle">SKY BANK</span>
+                    <span class="align-middle"><?php echo $bank_name; ?></span>
                 </a>
 
                 <ul class="navbar-nav align-self-stretch">
@@ -204,7 +206,7 @@ GROUP BY
                     </li> --> 
                     
                     <li class="menuHover">
-                        <a href="../admin/cards.php" class="nav-link text-left" role="button">
+                        <a href="../cards.php" class="nav-link text-left" role="button">
                             <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-credit-card ico"></i>Cards Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
                         </a>
                     </li> 
@@ -436,7 +438,7 @@ GROUP BY
                         <div class="row text-muted">
                             <div class="col-6 text-left">
                                 <p class="mb-0">
-                                    <a href="../../index.php" class="text-muted light"><strong>Sky Bank
+                                    <a href="../../index.php" class="text-muted light"><strong><?php echo $bank_name; ?>
                                         </strong></a> &copy
                                 </p>
                             </div>

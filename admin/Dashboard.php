@@ -4,7 +4,7 @@ if (!isset($_SESSION['accountNo'])) {
     header("Location: ../user/login.php");
 }
 
-include "../bankConfig.php";
+include "../../bankConfig.php";
 include '../user/connection.php';
 include "../admin/Notification.php";
 include "../admin/adminData.php";
