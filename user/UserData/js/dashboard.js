@@ -10,14 +10,14 @@ $(document).ready(function () {
         data: { BalanceCheck: balanceChecker },
         dataType: "json",
         success: function (response) {
-            $("#BalanceDisplay").text(response['Balance'] + " ₹");
-            $("#SavingDisplay").text(response['Saving'] + " ₹");
+            $("#BalanceDisplay").text("$" + response['Balance']);
+            $("#SavingDisplay").text("$"+response['Saving']);
 
-            $("#CreditDisplay").text(response['CreditThisMonth'] + " ₹");
-            $("#DebitDisplay").text(response['DebitThisMonth'] + " ₹");
+            $("#CreditDisplay").text("$" + response['CreditThisMonth']);
+            $("#DebitDisplay").text("$" + response['DebitThisMonth']);
 
-            $("#DebitLastM").text(response['DebitTotal'] + " ₹");
-            $("#CreditLastM").text(response['CreditTotal'] + " ₹");
+            $("#DebitLastM").text("$" + response['DebitTotal']);
+            $("#CreditLastM").text("$" + response['CreditTotal']);
 
 
 

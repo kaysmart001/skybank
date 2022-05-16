@@ -1,5 +1,6 @@
 <?php
 include "../connection.php";
+include "../../bankConfig.php";
 
 session_start();
 
@@ -17,7 +18,7 @@ $AccountNo = $_SESSION['AccountNo'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Cards Sky Bank</title>
+    <title>Cards <?php echo $bank_name; ?></title>
 
     <!-- Favicons -->
     <link href="../../assets/img/favicon-32x32.png" rel="icon">
@@ -94,7 +95,7 @@ $AccountNo = $_SESSION['AccountNo'];
                                 <p class="card-text pl-2 pr-2">Dear sir/madam, </p>
                                 <p class="card-text pl-2 pr-2"> &emsp; You Have Successfully send your debit card Application to the bank, Your virtual debit card verificaton in progress. The Debit Card Availabel within two to three days. </p>
                                 <p class="card-text pl-2 pr-2">Thank You, </p>
-                                <p class="card-text mb-4 pl-2 pr-2">Sky Bank</p>
+                                <p class="card-text mb-4 pl-2 pr-2"><?php echo $bank_name; ?></p>
 
 
                             </div>
@@ -128,7 +129,7 @@ $AccountNo = $_SESSION['AccountNo'];
                                                     <div class="card dcard-back">
                                                         <div class="card-body">
                                                             <div class="d-flex justify-content-between">
-                                                                <h5 class="text-light">Sky Bank</h5>
+                                                                <h5 class="text-light"><?php echo $bank_name; ?></h5>
                                                                 <h5 class="text-light visa">Visa</h5>
                                                             </div>
 
@@ -173,7 +174,7 @@ $AccountNo = $_SESSION['AccountNo'];
                                                                 <p style="text-align: end; color:black; padding:4px"><?php echo $cvv ?></p>
                                                             </div>
 
-                                                            <p class="description">This card issued by Sky Bank Bank pursuant to a license from Visa India,
+                                                            <p class="description">This card issued by <?php echo $bank_name; ?> Bank pursuant to a license from Visa India,
                                                                 Inc. Use ofthis card is subject to the agreement, as amended, This card isthe property ofthe issuer and must
                                                                 be returned upon request and may be revoked without notice.</p>
 

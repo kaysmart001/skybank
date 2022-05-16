@@ -22,8 +22,8 @@ $(document).ready(function () {
                 $("#NamePlate").text(response.FName + " " + response.LName);
                 $("#NameTag").text(response.TagName);
                 $("#ProfileTag").css("background-color", response.ProfileColor);
-                $("#BalanceDisplay").text(response.Balance + " ₹");
-                $("#SavingDisplay").text(response.SavingBalance + " ₹");
+                $("#BalanceDisplay").text("$"+response.Balance + " ₹");
+                $("#SavingDisplay").text("$"+response.SavingBalance);
                 $("#AcNo").text(response.AccountNo);
                 $("#AcType").text(response.AccountType);
                 $("#Adhar").text(response.AdharNo);
@@ -33,9 +33,6 @@ $(document).ready(function () {
                 $("#Email").text(response.Email);
                 $("#GenderPlate").text(response.Gender);
 
-                
-                
-                
 
                 // Modal Profile
                 if(response.ProfileImage != ""){
@@ -43,7 +40,6 @@ $(document).ready(function () {
                     $("#ModalProfileImg").attr("src", response.ProfileImage);
                     $("#ProfileIcon").attr("hidden", true);
                 }
-            
 
                 // Page Profile
                 if(response.ProfileImage != ""){
@@ -51,8 +47,6 @@ $(document).ready(function () {
                     $("#ProfilePic").attr("src", response.ProfileImage);
                     $("#ProfileTag").attr("hidden", true);
                 }
-               
-                
                 if(response.Bio == ""){
                     $("#AboutBio").text("The purpose of our lives is to be happy");
                     $("#bio").val("The purpose of our lives is to be happy");
@@ -66,7 +60,7 @@ $(document).ready(function () {
     });
 
 
-    $("#upload").change(function (e) { 
+    $("#upload").change(function (e) {
 
         let profilePath = URL.createObjectURL(e.target.files[0]);
 
@@ -77,7 +71,6 @@ $(document).ready(function () {
 
         console.log(profilePath);
         e.preventDefault();
-        
     });
 
 

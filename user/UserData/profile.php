@@ -17,7 +17,7 @@ $AccountNo = $_SESSION['AccountNo'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Profile Sky Bank</title>
+    <title>Profile <?php echo $bank_name; ?></title>
 
     <!-- Favicons -->
     <link href="../../assets/img/favicon-32x32.png" rel="icon">
@@ -32,7 +32,6 @@ $AccountNo = $_SESSION['AccountNo'];
     <link rel="stylesheet" href="../../assets/vendor/boxicons/css/animations.css">
     <link rel="stylesheet" href="../../assets/vendor/boxicons/css/transformations.css">
 
-   
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!--fontawesome-->
@@ -96,7 +95,7 @@ $AccountNo = $_SESSION['AccountNo'];
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <h5 class="card-title mb-4">Balance</h5>
-                                    <div><i class="fas fa-rupee-sign" style="color: #0cc91f; font-size:1.2rem;"></i></div>
+                                    <div><i class="fas fa-dollar-sign" style="color: #0cc91f; font-size:1.2rem;"></i></div>
                                 </div>
 
                                 <h1 id="BalanceDisplay" class="display-5 mt-1 mb-1 text-success"></h1>

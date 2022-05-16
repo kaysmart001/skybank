@@ -14,7 +14,6 @@ $username = $_SESSION['username'];
 $query = "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE login.Username = '$username'";
 $result = mysqli_query($conn, $query) or mysqli_error($conn);
 
-echo mysqli_num_rows($result);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
 
@@ -286,7 +285,7 @@ if (mysqli_num_rows($TotalDebitResult) > 0) {
                         <table class="table v-middle">
                             <thead>
                                 <tr class="bg-light">
-                                    <th class="border-top-0">Sr.No</th>
+                                    <th class="border-top-0">Sr.No.</th>
                                     <th class="border-top-0">Name</th>
                                     <th class="border-top-0">Account No</th>
                                     <th class="border-top-0">Date</th>
@@ -325,12 +324,11 @@ if (mysqli_num_rows($TotalDebitResult) > 0) {
                                             <td><?php echo $row['FAccountNo'] ?></td>
                                             <td><?php echo $row['Date'] ?></td>
                                             <td>
-                                                <label class="label label-danger"><?php echo $row['Amount'] ?></label>
+                                                <label class="label label-danger"><?php echo "$".$row['Amount'] ?></label>
                                             </td>
                                             <td>
 
                                                 <span class="Status
-                                            
                                             <?php
                                             if ($row['Status'] == 'Debited')
                                                 echo "text-danger";

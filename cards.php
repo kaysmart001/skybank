@@ -1,3 +1,6 @@
+<?php
+  include "bankConfig.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Cards Sky Bank</title>
+  <title>Cards <?php echo $bank_name; ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -33,7 +36,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="../">Sky Bank</a></h1>
+      <h1 class="logo"><a href="../"><?php echo $bank_name; ?></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -92,7 +95,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Sky Bank</h3>
+            <h3><?php echo $bank_name; ?></h3>
             <p>
               Sky Tower <br>
               New Mumbai, NY 535022<br>
@@ -129,7 +132,7 @@
               <img src="assets/img/Logo.svg" style="width: 100px; height: 100px;" alt="">
             </div>
             
-            <h1 class="text-center mt-2">SKY BANK</h1>
+            <h1 class="text-center mt-2"><?php echo $bank_name; ?></h1>
           </div>
 
         </div>
@@ -141,7 +144,7 @@
       <div class="copyright-wrap d-md-flex py-4">
         <div class="me-md-auto text-center text-md-start">
           <div class="copyright">
-            &copy; Copyright <strong><span>Sky Bank</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span><?php echo $bank_name; ?></span></strong>. All Rights Reserved
           </div>
           <div class="credits">
             <!-- All the links in the footer should remain intact. -->

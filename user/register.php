@@ -1,6 +1,7 @@
 <?php
 include 'connection.php';
 include "script.php";
+include "../mail/sendMail.php";
 require_once '../bankConfig.php';
 include '../mail/mail_config.php';
 session_start();
@@ -115,6 +116,8 @@ if (isset($_SESSION['username'])) {
         if (!empty($Email)) {
             if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $Email)) {
                 $Email_error = "* Invalid Email ID";
+                header("Location: ../user/register.php?error=" . $Email_error);
+                exit();
             } else {
                 $Email = mysqli_real_escape_string($conn, $_POST['email']);
                 $queryEmail = "SELECT * FROM customer_detail WHERE C_Email = '" . $Email . "'";
@@ -123,10 +126,14 @@ if (isset($_SESSION['username'])) {
 
                 if (mysqli_num_rows($result2) > 0) {
                     $Email_error = "* Email Already Exist";
+                    header("Location: ../user/register.php?error=" . $Email_error);
+                    exit();
                 }
             }
         } else {
             $Email_error = "* Enter Your Email";
+            header("Location: ../user/register.php?error=" . $Email_error);
+            exit();
         }
 
 
@@ -141,7 +148,9 @@ if (isset($_SESSION['username'])) {
         $age = $diff->y;
 
         if ($age < 18) {
-            $Birth_Date_error = "* You Are Not Eligible to Open Online Account.";
+            $Birth_Date_error = "You Are Not Eligible to Open Online Account.";
+            header("Location: ../user/register.php?error=" . $Birth_Date_error);
+            exit();
         }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++ Basic Detail Ends Here +++++++++++++++++++++++++++++++++++++++++
@@ -161,7 +170,9 @@ if (isset($_SESSION['username'])) {
         if (!empty($Username)) {
             if (!preg_match_all('/^[A-Za-z]{1}[A-Za-z0-9]{5,31}$/', $Username)) {
 
-                $UsernameError = "* Please Enter Valid Username";
+                $UsernameError = "Please Enter Valid Username";
+                header("Location: ../user/register.php?error=" . $UsernameError);
+                exit();
             } else {
                 $UsernameError = false;
 
@@ -171,36 +182,51 @@ if (isset($_SESSION['username'])) {
                 $result3 =  mysqli_query($conn, $query3);
 
                 if (mysqli_num_rows($result3) > 0) {
-                    $UsernameError = "* Username Already Exist";
+                    $UsernameError = "Username Already Exist";
+                    header("Location: ../user/register.php?error=" . $UsernameError);
+                    exit();
                 }
             }
         } else {
             $UsernameError = "* Username Cannot Empty";
+            header("Location: ../user/register.php?error=" . $UsernameError);
+            exit();
         }
 
         // ----------------------------------------- Password Verification ---------------------------------------------
         if (!empty($Password)) {
             if (!preg_match_all('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$/m', $Password)) {
-                $PasswordError  = "* Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character";
+                $PasswordError  = "Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character";
+                header("Location: ../user/register.php?error=" . $PasswordError);
+                exit();
             } else {
                 $hashPass = md5($Password);
                 $PasswordError = false;
             }
         } else {
             $PasswordError = "Password Cannot be empty";
+            $PasswordError  = "Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character";
+            header("Location: ../user/register.php?error=" . $PasswordError);
+            exit();
         }
 
         if (!empty($ConfirmPassword)) {
 
             if ($ConfirmPassword != $Password) {
                 $ConfirmPasswordError = "Please Enter same Password";
+                header("Location: ../user/register.php?error=" . $PasswordError);
+                exit();
             } else {
                 $ConfirmPasswordError = false;
-                // unset($_SESSION['otp']);
-                // header('Location: ../user/login.php');
+                $otp = rand(100000, 999999);
+
+                $_SESSION['otp'] = $otp;
+                header('Location: ../user/login.php');
             }
         } else {
             $ConfirmPasswordError = "Please Confirm Password";
+            header("Location: ../user/register.php?error=" . $PasswordError);
+            exit();
         }
 
         // --------------------------------------------------- Random Color Hex Generator for Profile ----------------------- 
@@ -222,7 +248,7 @@ if (isset($_SESSION['username'])) {
         }
 
         //Print out our random hex color.
-        // echo $hex;
+        $ProfileColor = $hex;
 
         // ----------------------------------------- KYC Document Upload Section -----------------------------------------
 
@@ -302,6 +328,16 @@ if (isset($_SESSION['username'])) {
 
             // Pan And Adhar is upload or not
 
+            $_SESSION['Account_No'] = $Account_Number;
+            $_SESSION['C_First_Name'] = $First_Name;
+            $_SESSION['C_Last_Name'] = $Last_Name;
+            $_SESSION['C_Birth_Date'] = $Birth_Date;
+            $_SESSION['C_Email'] = $Email;
+            $_SESSION['C_Pincode'] = $Pincode;
+            $_SESSION['ProfileColor'] = $ProfileColor;
+            $_SESSION['Gender'] = '';
+            $_SESSION['Username'] = $Username;
+            $_SESSION['hashPass'] = $hashPass;
             $Upload_query = "INSERT INTO
             customer_detail(`Account_No`, `C_First_Name`, `C_Last_Name`, `C_Father_Name`, `C_Mother_Name`, `C_Birth_Date`, /*C_Adhar_No, C_Pan_No,*/ `C_Mobile_No`, `C_Email`, `C_Pincode`, `C_Adhar_Doc`, `C_Pan_Doc`, `ProfileColor`, `Gender`, `ProfileImage`, `Bio`)
             VALUES('$Account_Number', '$First_Name', '$Last_Name', '', '', '$Birth_Date', '', '$Email', '$Pincode', '', '', '$hex', 'Not Availabel', '', '')";
@@ -315,14 +351,15 @@ if (isset($_SESSION['username'])) {
 
             // query execution
 
-            mysqli_query($conn, $Upload_query) or die(mysqli_error($conn));
-            mysqli_query($conn, $login_query) or die(mysqli_error($conn));
-            mysqli_query($conn, $account_query) or die(mysqli_error($conn));
+            // mysqli_query($conn, $Upload_query) or die(mysqli_error($conn));
+            // mysqli_query($conn, $login_query) or die(mysqli_error($conn));
+            // mysqli_query($conn, $account_query) or die(mysqli_error($conn));
 
             require '../mail/congraMail.php';
-            sendMessage($Email, $First_Name);
-
-            $_SESSION['username'] = $Username;
+            // $response = sendMessage($Email, $First_Name);
+            $res = sendMail($First_Name." ".$Last_Name,$Email,"One Time Password",$otp);
+            echo $res;
+            // $_SESSION['username'] = $Username;
         }
     }
 }
@@ -363,7 +400,9 @@ if (isset($_SESSION['username'])) {
         }
     </style>
 
-
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../assets/js/createAc.js"></script>
 </head>
 
 <body>
@@ -449,6 +488,7 @@ if (isset($_SESSION['username'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="../assets/js/sweetalert.min.js"></script>
     <script src="../assets/js/showHidePass.js"></script>
+    <script src="../assets/js/createAccount.js"></script>
     <script>
         <?php if (isset($_GET['error'])) { ?>
             swal({

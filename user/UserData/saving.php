@@ -3,6 +3,8 @@ include "../connection.php";
 
 session_start();
 
+include "../../bankConfig.php";
+
 if (!isset($_SESSION['username'])) {
     header("Location: ../login.php");
 }
@@ -19,7 +21,7 @@ $AccountNo = $_SESSION['AccountNo'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Saving Sky Bank</title>
+    <title>Saving <?php echo $bank_name; ?></title>
 
     <!-- Favicons -->
     <link href="../../assets/img/favicon-32x32.png" rel="icon">

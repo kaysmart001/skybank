@@ -28,10 +28,10 @@ include "../../bankConfig.php";
                         <a class="text-muted" href="#">Help Center</a>
                     </li> -->
                     <li class="footer-item">
-                        <a class="text-muted" href="../../privacypolicy.html">Privacy</a>
+                        <a class="text-muted" href="../../privacypolicy.php">Privacy</a>
                     </li>
                     <li class="footer-item">
-                        <a class="text-muted" href="../../terms.html">Terms</a>
+                        <a class="text-muted" href="../../terms.php">Terms</a>
                     </li>
                 </ul>
             </div>

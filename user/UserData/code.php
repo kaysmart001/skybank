@@ -11,7 +11,7 @@ $AcNo = $_SESSION['AccountNo'];
 // echo "run";
 
 if (isset($_POST['BalanceCheck'])) {
-    // Dashnoard / Query to get Total Balane and saving and AccountNO
+    // Dashnoard / Query to get Total Balance and saving and AccountNO
     $query = "SELECT * FROM customer_detail JOIN login ON customer_detail.Account_No = login.AccountNo JOIN accounts ON accounts.AccountNo = login.AccountNo WHERE login.Username = '$username'";
     $result = mysqli_query($conn, $query) or mysqli_error($conn);
 
@@ -149,7 +149,7 @@ if (isset($_POST['AcNo'])) {
 }
 
 
-// Checking Status 
+// Checking Status
 if (isset($_POST['AcState'])) {
     $AccountNo = $_POST['AcState'];
 

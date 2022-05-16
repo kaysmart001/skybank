@@ -10,14 +10,14 @@ $(document).ready(function () {
         success: function (response) {
             let SavingBalance = response.SavingBalance;
             let Target = response.SavingTarget;
-            $("#SavingDisplay").text("₹ " + response.SavingBalance);
+            $("#SavingDisplay").text("$" + response.SavingBalance);
 
             if (response.SavingTarget == "" || response.Target == 0) {
                 $("#TargetDisplay").text("Target Not Set");
                 Target = "0.0";
             }
             else {
-                $("#TargetDisplay").text("₹ " + response.SavingTarget);
+                $("#TargetDisplay").text("$ " + response.SavingTarget);
             }
 
             if (response.SavingTarget == 0 || response.Target == "") {
