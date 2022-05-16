@@ -12,7 +12,7 @@ include "bankConfig.php";
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>National Bank</title>
+  <title><?php echo $bank_name; ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -44,8 +44,8 @@ include "bankConfig.php";
     <div class="container d-flex align-items-center justify-content-between">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.php" class="logo"><img src="assets/img/Logo3.png" alt="" class="img-fluid"> &nbsp National Bank</a>
-      <!-- <h1 class="logo"><a href="index.php">National Bank</a></h1> -->
+      <a href="index.php" class="logo"><img src="assets/img/Logo3.png" alt="" class="img-fluid"> &nbsp <?php echo $bank_name; ?></a>
+      <!-- <h1 class="logo"><a href="index.php"><?php echo $bank_name; ?></a></h1> -->
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -318,7 +318,7 @@ include "bankConfig.php";
               <div class="testimonial-item">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  National Bank is the best bank for Monitoring account it provide data in graphical manner from that can we understand our account is in profit or loss. Also i use saving option which is wonderful.
+                  <?php echo $bank_name; ?> is the best bank for Monitoring account it provide data in graphical manner from that can we understand our account is in profit or loss. Also i use saving option which is wonderful.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
                 <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
@@ -331,7 +331,7 @@ include "bankConfig.php";
               <div class="testimonial-item">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  The Transaction system of the National Bank is very fast. We can easily manage our transaction history
+                  The Transaction system of the <?php echo $bank_name; ?> is very fast. We can easily manage our transaction history
                   with digramatical manner
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
@@ -346,7 +346,7 @@ include "bankConfig.php";
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                   This is the wonderful bank i ever seen. You can esily create account in just 10 minutes
-                  and start your online banking. Thank You National Bank!
+                  and start your online banking. Thank You <?php echo $bank_name; ?>!
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
                 <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
@@ -795,7 +795,7 @@ include "bankConfig.php";
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>National Bank</h3>
+            <h3><?php echo $bank_name; ?></h3>
             <p>
               <!-- Sky Tower <br>
               New Mumbai, NY 535022<br>
@@ -833,7 +833,7 @@ include "bankConfig.php";
               <img src="assets/img/Logo.svg" style="width: 100px; height: 100px;" alt="">
             </div>
 
-            <h1 class="text-center mt-2">National Bank</h1>
+            <h1 class="text-center mt-2"><?php echo $bank_name; ?></h1>
           </div>
 
         </div>
@@ -845,7 +845,7 @@ include "bankConfig.php";
       <div class="copyright-wrap d-md-flex py-4">
         <div class="me-md-auto text-center text-md-start">
           <div class="copyright">
-            &copy; Copyright <strong><span>National Bank</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span><?php echo $bank_name; ?></span></strong>. All Rights Reserved
           </div>
           <div class="credits">
             <!-- All the links in the footer should remain intact. -->
