@@ -2,10 +2,16 @@
 
     // Defining constant php variable for local host
     
-    define('DB_host', 'localhost');
-    define('DB_username', 'root');
-    define('DB_password', 'root');
-    define('DB_name', 'SkyBank');
+    // define('DB_host', 'localhost');
+    // define('DB_username', 'root');
+    // define('DB_password', 'root');
+    // define('DB_name', 'SkyBank');
+
+    define('DB_host', 'server153-5.web-hosting.com');
+    define('DB_username', 'skyrjrtq_admin');
+    define('DB_password', 'D)BXUo)y#6uI');
+    define('DB_name', 'skyrjrtq_skyreliance');
+
     $conn = mysqli_connect(DB_host, DB_username, DB_password, DB_name);
 
     if (!$conn) {

@@ -4,11 +4,16 @@
     ini_set('display_startup_errors',1);
     error_reporting(E_ALL);
      // Defining constant php variable for local host
-    
-     define('DB_host', 'localhost');
-     define('DB_username', 'root');
-     define('DB_password', 'root');
-     define('DB_name', 'SkyBank');
+
+     define('DB_host', 'server153-5.web-hosting.com');
+     define('DB_username', 'skyrjrtq_admin');
+     define('DB_password', 'D)BXUo)y#6uI');
+     define('DB_name', 'skyrjrtq_skyreliance');
+
+    //  define('DB_host', 'localhost');
+    //  define('DB_username', 'root');
+    //  define('DB_password', 'root');
+    //  define('DB_name', 'SkyBank');
  
 
     // define('DB_host', 'nationalbankplc.org');
@@ -48,4 +53,3 @@
     // }
 
     // mysqli_close($conn);
-?>
