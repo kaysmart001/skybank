@@ -80,5 +80,9 @@ function sendMail($name, $email, $subject, $body)
     $headers .= "From: " . $email . "\r\n";
 
     $res = mail($to, $subject, $message, $headers);
-    echo $res;
+    if ($res) {
+        return "Success";
+    }else{
+        return false;
+    }
 }
