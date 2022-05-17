@@ -26,6 +26,13 @@ function sendMail($name, $email, $subject, $body)
     $mail->Username = "admin@skyreliance.org";
     $mail->Password = "Greatedafe94.";
     $mail->Port = 465;
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
     $mail->SMTPSecure = "tls";
 
     // SMTP settings
