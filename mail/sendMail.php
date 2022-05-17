@@ -20,12 +20,21 @@ function sendMail($name, $email, $subject, $body)
     
     // SMTP settings
     $mail->isSMTP();
-    $mail->Host = "smtp.gmail.com";
+    $mail->Host = "skyreliance.org";
     $mail->SMTPAuth = true;
-    $mail->Username = "greatedafeoke@gmail.com";
-    $mail->Password = "GreatEdafe94..";
-    $mail->Port = 587;
+    $mail->Username = "admin@skyreliance.org";
+    $mail->Password = "Greatedafe94.";
+    $mail->Port = 465;
     $mail->SMTPSecure = "tls";
+
+    // SMTP settings
+    // $mail->isSMTP();
+    // $mail->Host = "smtp.gmail.com";
+    // $mail->SMTPAuth = true;
+    // $mail->Username = "greatedafeoke@gmail.com";
+    // $mail->Password = "GreatEdafe94..";
+    // $mail->Port = 587;
+    // $mail->SMTPSecure = "tls";
 
     // Email settings
     $mail->isHTML(true);

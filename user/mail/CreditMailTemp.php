@@ -1,3 +1,7 @@
+<?php
+include "../../bankConfig.php";
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -446,7 +450,7 @@
             <tr>
               <td class="email-masthead">
                 <a href="https://example.com" class="f-fallback email-masthead_name">
-                SKY BANK
+                <?php echo $bank_name; ?>
               </a>
               </td>
             </tr>
@@ -459,7 +463,7 @@
                     <td class="content-cell">
                       <div class="f-fallback">
                         <p>Hi {Name}</p>
-                        <p>Your Account {AccountNo} can be credited with amount of Rs. {Amount} on {Date} Now Your Total Balance is {totalAmount}</p>
+                        <p>Your Account {AccountNo} can be credited with amount of dollars. {Amount} on {Date} Now Your Total Balance is {totalAmount}</p>
                         <!-- Action -->
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
@@ -478,7 +482,7 @@
                         </table>
                         <p>If You Don't Know who perfrom this transaction or credit money in your account please call on this help line number 001244</p>
                         <p>Thanks,
-                          <br>Sky Bank </p>
+                          <br><?php echo $bank_name; ?> </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
                           <tr>
@@ -499,9 +503,9 @@
                 <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
                   <tr>
                     <td class="content-cell" align="center">
-                      <p class="f-fallback sub align-center">&copy; 2021 Sky Bank. All rights reserved.</p>
+                      <p class="f-fallback sub align-center">&copy; 2021 <?php echo $bank_name; ?>. All rights reserved.</p>
                       <p class="f-fallback sub align-center">
-                        Sky Bank, LLC
+                        <?php echo $bank_name; ?>, LLC
                         <br>CS Street Rd.
                         <br>Sky Tower Mumbai
                       </p>
