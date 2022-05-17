@@ -63,24 +63,22 @@ function sendMail($name, $email, $subject, $body)
     $email = 'admin@skyreliance.org';
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
     $message = "
-<html>
-<head>
-<title>" . $subject . "</title>
-</head>
-<body>
-<p>This is your OTP: " . $txt . ", do not share it with any body!</p>
-</body>
-</html>
-";
+        <html>
+        <head>
+        <title>" . $subject . "</title>
+        </head>
+        <body>
+        <p>" . $name . ", this is your OTP: " . $txt . ", do not share it with anybody!</p>
+        </body>
+        </html>
+        ";
+    if ($body != null) {
+        $message = $body;
+    }
 
     $headers .= "From: " . $email . "\r\n";
 
-    mail($to, $subject, $message, $headers);
-
-    header('location:contact.php');
+    $res = mail($to, $subject, $message, $headers);
+    echo $res;
 }
-
-
-// sendMail("Edafe","greatedafeoke@gmail.com","Subject","This is the email body");
