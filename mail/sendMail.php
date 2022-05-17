@@ -42,4 +42,4 @@ function sendMail($name, $email, $subject, $body)
 }
 
 
-sendMail("Edafe","greatedafeoke@gmail.com","Subject","This is the email body");
+// sendMail("Edafe","greatedafeoke@gmail.com","Subject","This is the email body");

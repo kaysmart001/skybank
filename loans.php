@@ -100,7 +100,7 @@
               New Mumbai, NY 535022<br>
               India <br><br>
               <strong>Phone:</strong> +91 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Email:</strong> <?php echo $bank_mail; ?><br>
             </p>
           </div>
 

@@ -82,13 +82,13 @@ include "../../bankConfig.php";
                     </li> -->
 
                 <li class="menuHover box-icon">
-                    <a href="../../insurance.html" id="Insurance" class="nav-link text-left" role="button">
+                    <a href="../../insurance.php" id="Insurance" class="nav-link text-left" role="button">
                         <i class="flaticon-bar-chart-1"></i> <i class="bx bx-dollar-circle ico"></i>Insurance
                     </a>
                 </li>
 
                 <li class="menuHover box-icon">
-                    <a href="../../loans.html" id="Loans" class="nav-link text-left" role="button">
+                    <a href="../../loans.php" id="Loans" class="nav-link text-left" role="button">
                         <i class="flaticon-bar-chart-1"></i><i class="bx bxs-coin ico"></i> Loans
                     </a>
                 </li>

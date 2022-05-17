@@ -5,8 +5,7 @@ include "../mail/sendMail.php";
 require_once '../bankConfig.php';
 include '../mail/mail_config.php';
 session_start();
-// $login_query = "INSERT INTO login(`AccountNo`, `Username`, `Password`, `Status`, `State`) VALUES('234543234565', 'dedafe', 'hashPass', 'Account_Status', '0')";
-// $res = mysqli_query($conn, $login_query);
+
 $Pincode =  mt_srand(000, 999);
 
 //  Error Variables
@@ -64,55 +63,6 @@ if (isset($_SESSION['username'])) {
             $Last_Name_error = "* Numeric value not allowed in Last Name";
         }
 
-
-        // ********************************* Pan Number Validation *********************************************
-
-        // if ($Pan_Number != null) {
-        //     // Regular Expression to validate pan number
-        //     $regex = '/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/';
-
-        //     // if pan number not match with above pattern
-        //     if (!preg_match_all($regex, $Pan_Number)) {
-        //         $Pan_Number_error = "* INVALID PAN NUMBER";
-        //     } else {
-        //         $Pan_Number = mysqli_real_escape_string($conn, $_POST['PanNumber']);
-        //         $query =  $query = "SELECT * FROM customer_detail WHERE C_Pan_No = '" . $Pan_Number . "'";
-
-        //         $result =  mysqli_query($conn, $query);
-
-        //         if (mysqli_num_rows($result) > 0) {
-        //             $Pan_Number_error = "* Pan Number Already Exist";
-        //         }
-        //     }
-        // } else {
-        //     $Pan_Number_error = "* Please Enter Pan Number";
-        // }
-
-
-
-        // ********************************** Birth Date Validation *********************************************
-
-
-        // **************************************** Adhar Validation *******************************************************
-        // if (!is_numeric($Adhar_Number) || is_null($Adhar_Number) || !preg_match('/^[0-9]{12}+$/', $Adhar_Number)) {
-        //     $Adhar_Number_error = "Invalid Adhar Number";
-        // } else {
-
-        //     // Adhar Number Exist in database or not validation 
-
-        //     $Adhar_Number = mysqli_real_escape_string($conn, $_POST['AdharNumber']);
-        //     $query1 = "SELECT * FROM customer_detail WHERE C_Adhar_No = '" . $Adhar_Number . "'";
-
-        //     $result1 =  mysqli_query($conn, $query1);
-
-        //     if (mysqli_num_rows($result1) > 0) {
-        //         $Adhar_Number_error = "* Adhar Number Already Exist";
-        //     }
-        // }
-
-        // ************************************************** Email Validation *********************************************
-
-
         if (!empty($Email)) {
             if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $Email)) {
                 $Email_error = "* Invalid Email ID";
@@ -131,7 +81,7 @@ if (isset($_SESSION['username'])) {
                 }
             }
         } else {
-            $Email_error = "* Enter Your Email";
+            $Email_error = "Enter Your Email";
             header("Location: ../user/register.php?error=" . $Email_error);
             exit();
         }
@@ -152,14 +102,6 @@ if (isset($_SESSION['username'])) {
             header("Location: ../user/register.php?error=" . $Birth_Date_error);
             exit();
         }
-
-        // ++++++++++++++++++++++++++++++++++++++++++++++ Basic Detail Ends Here +++++++++++++++++++++++++++++++++++++++++
-
-
-
-
-        // -------------------------------------------- USERNAME AND PASSWORD VERIFICATION -------------------------------
-
 
         $Username = $_POST['username'];
         $Password  = $_POST['password'];
@@ -188,7 +130,7 @@ if (isset($_SESSION['username'])) {
                 }
             }
         } else {
-            $UsernameError = "* Username Cannot Empty";
+            $UsernameError = "Username Cannot Empty";
             header("Location: ../user/register.php?error=" . $UsernameError);
             exit();
         }
@@ -218,148 +160,77 @@ if (isset($_SESSION['username'])) {
                 exit();
             } else {
                 $ConfirmPasswordError = false;
-                $otp = rand(100000, 999999);
+                $OTP = rand(100000, 999999);
+                $_SESSION['OTP'] = $OTP;
 
-                $_SESSION['otp'] = $otp;
-                header('Location: ../user/login.php');
+
+                $hex = '#';
+
+                //Create a loop.
+                foreach (array('r', 'g', 'b') as $color) {
+                    //Random number between 0 and 255.
+                    $val = mt_rand(0, 255);
+                    //Convert the random number into a Hex value.
+                    $dechex = dechex($val);
+                    //Pad with a 0 if length is less than 2.
+                    if (strlen($dechex) < 2) {
+                        $dechex = "0" . $dechex;
+                    }
+                    //Concatenate
+                    $hex .= $dechex;
+                }
+
+                //Print out our random hex color.
+                $ProfileColor = $hex;
+
+                if ($First_Name_error == null && $Last_Name_error == null && $Email_error == null && $UsernameError == false && $PasswordError == false && $ConfirmPasswordError == false) {
+
+
+                    $_SESSION['Account_No'] = $Account_Number;
+                    $_SESSION['C_First_Name'] = $First_Name;
+                    $_SESSION['C_Last_Name'] = $Last_Name;
+                    $_SESSION['C_Birth_Date'] = $Birth_Date;
+                    $_SESSION['C_Email'] = $Email;
+                    $_SESSION['C_Pincode'] = $Pincode;
+                    $_SESSION['ProfileColor'] = $ProfileColor;
+                    $_SESSION['Gender'] = '';
+                    $_SESSION['Username'] = $Username;
+                    $_SESSION['hashPass'] = $hashPass;
+
+                    // $Upload_query = "INSERT INTO
+                    // customer_detail(`Account_No`, `C_First_Name`, `C_Last_Name`, `C_Father_Name`, `C_Mother_Name`, `C_Birth_Date`, /*C_Adhar_No, C_Pan_No,*/ `C_Mobile_No`, `C_Email`, `C_Pincode`, `C_Adhar_Doc`, `C_Pan_Doc`, `ProfileColor`, `Gender`, `ProfileImage`, `Bio`)
+                    // VALUES('$Account_Number', '$First_Name', '$Last_Name', '', '', '$Birth_Date', '', '$Email', '$Pincode', '', '', '$hex', 'Not Availabel', '', '')";
+
+
+                    // // sql query for login table
+                    // $login_query = "INSERT INTO login(`AccountNo`, `Username`, `Password`, `Status`, `State`) VALUES('$Account_Number', '$Username', '$hashPass', '$Account_Status', '0')";
+
+                    // // sql query for Accounts table
+                    // $account_query = "INSERT INTO accounts(`AccountNo`, `Balance`, `AccountType`, `SavingBalance`, `SavingTarget`, `State`) VALUES('$Account_Number', '$Balance', '$Account_Type', '0.0', '', '0')";
+
+                    // // query execution
+
+                    // // mysqli_query($conn, $Upload_query) or die(mysqli_error($conn));
+                    // // mysqli_query($conn, $login_query) or die(mysqli_error($conn));
+                    // // mysqli_query($conn, $account_query) or die(mysqli_error($conn));
+
+                    // require '../mail/congraMail.php';
+                    // $response = sendMessage($Email, $First_Name);
+                    // echo $otp;
+                    $res = sendMail($First_Name . " " . $Last_Name, $Email, "One Time Password", $otp);
+
+                    if ($res === "Success") {
+                        header("location: ./CreateAccount.php");
+                    } else {
+                        header("Location: ../user/register.php?error= ". $res);
+                        exit();
+                    }
+                }
             }
         } else {
             $ConfirmPasswordError = "Please Confirm Password";
             header("Location: ../user/register.php?error=" . $PasswordError);
             exit();
-        }
-
-        // --------------------------------------------------- Random Color Hex Generator for Profile ----------------------- 
-
-        $hex = '#';
-
-        //Create a loop.
-        foreach (array('r', 'g', 'b') as $color) {
-            //Random number between 0 and 255.
-            $val = mt_rand(0, 255);
-            //Convert the random number into a Hex value.
-            $dechex = dechex($val);
-            //Pad with a 0 if length is less than 2.
-            if (strlen($dechex) < 2) {
-                $dechex = "0" . $dechex;
-            }
-            //Concatenate
-            $hex .= $dechex;
-        }
-
-        //Print out our random hex color.
-        $ProfileColor = $hex;
-
-        // ----------------------------------------- KYC Document Upload Section -----------------------------------------
-
-
-        // Storing Form values in variable
-
-        // Pan Card Variable
-
-        // $Pan_Files = $_FILES['PanCardUp'];
-        // $Pan_fileName = $Pan_Files['name'];
-        // $Pan_fileName = preg_replace('/\s/', '_', $Pan_fileName); // replacing space with underscore
-        // $Pan_fileType = $Pan_Files['type'];
-        // $Pan_fileError = $Pan_Files['error'];
-        // $Pan_fileTempName = $Pan_Files['tmp_name'];
-        // $Pan_fileSize = $Pan_Files['size'];
-        // $Pan_Up_error = false;
-
-        // Adhar Card Variable
-        // $Adhar_Files = $_FILES['AdharCardUp'];
-        // $Adhar_fileName = $Adhar_Files['name'];
-        // $Adhar_fileName = preg_replace('/\s/', '_', $Adhar_fileName); // replacing space with underscore
-        // $Adhar_fileType = $Adhar_Files['type'];
-        // $Adhar_fileError = $Adhar_Files['error'];
-        // $Adhar_fileTempName = $Adhar_Files['tmp_name'];
-        // $Adhar_fileSize = $Adhar_Files['size'];
-        // $Adhar_Up_error = false;
-
-        // Array storing file extention global version
-        // $Valid_Extention = array('png', 'jpg', 'jpeg');
-
-
-
-        // ************************************ Validating Pan Card Document **********************************************
-
-        // use built in function ( pathinfo() ) to seprate file name and store them in seprate variable
-
-        // $Pan_file_extention = pathinfo($Pan_fileName, PATHINFO_EXTENSION);
-        // $Pan_fileName = pathinfo($Pan_fileName, PATHINFO_FILENAME);
-
-        // $Adhar_file_extention = pathinfo($Adhar_fileName, PATHINFO_EXTENSION);
-        // $Adhar_fileName = pathinfo($Adhar_fileName, PATHINFO_FILENAME);
-
-        // Generating unique name with date and time 
-        // $Pan_Unique_Name = $Pan_fileName . date('mjYHis') . "." . $Pan_file_extention;
-        // $Adhar_Unique_Name = $Adhar_fileName . date('mjYHis') . "." . $Adhar_file_extention;
-
-
-        // Validating Pan Card
-
-
-        // if (!empty($Pan_fileName) && !empty($Adhar_fileName)) {
-
-        // Setting file size condition
-        // if ($Pan_fileSize <= 2000000 && $Adhar_fileSize <= 2000000) {
-
-        // checking file extention
-        // if (in_array($Pan_file_extention, $Valid_Extention) && in_array($Adhar_file_extention, $Valid_Extention)) {
-
-        //     // Pancard Destination Variable
-        //     $Pan_destinationFile = 'customer_data/Pan_doc/' . $Pan_Unique_Name;
-
-
-        //     // Adharcard Destination Variable
-        //     $Adhar_destinationFile = 'customer_data/Adhar_doc/' . $Adhar_Unique_Name;
-
-
-
-
-
-        // Validating All Error Are values are null or not means checking any error in form or not
-        if ($First_Name_error == null && $Last_Name_error == null && $Email_error == null && $UsernameError == false && $PasswordError == false && $ConfirmPasswordError == false) {
-
-
-            // // Uploading Document to server
-            // $Adhar_Upload = move_uploaded_file($Adhar_fileTempName, $Adhar_destinationFile);
-            // $Pan_Upload = move_uploaded_file($Pan_fileTempName, $Pan_destinationFile);
-
-            // Pan And Adhar is upload or not
-
-            $_SESSION['Account_No'] = $Account_Number;
-            $_SESSION['C_First_Name'] = $First_Name;
-            $_SESSION['C_Last_Name'] = $Last_Name;
-            $_SESSION['C_Birth_Date'] = $Birth_Date;
-            $_SESSION['C_Email'] = $Email;
-            $_SESSION['C_Pincode'] = $Pincode;
-            $_SESSION['ProfileColor'] = $ProfileColor;
-            $_SESSION['Gender'] = '';
-            $_SESSION['Username'] = $Username;
-            $_SESSION['hashPass'] = $hashPass;
-            $Upload_query = "INSERT INTO
-            customer_detail(`Account_No`, `C_First_Name`, `C_Last_Name`, `C_Father_Name`, `C_Mother_Name`, `C_Birth_Date`, /*C_Adhar_No, C_Pan_No,*/ `C_Mobile_No`, `C_Email`, `C_Pincode`, `C_Adhar_Doc`, `C_Pan_Doc`, `ProfileColor`, `Gender`, `ProfileImage`, `Bio`)
-            VALUES('$Account_Number', '$First_Name', '$Last_Name', '', '', '$Birth_Date', '', '$Email', '$Pincode', '', '', '$hex', 'Not Availabel', '', '')";
-
-
-            // sql query for login table
-            $login_query = "INSERT INTO login(`AccountNo`, `Username`, `Password`, `Status`, `State`) VALUES('$Account_Number', '$Username', '$hashPass', '$Account_Status', '0')";
-
-            // sql query for Accounts table
-            $account_query = "INSERT INTO accounts(`AccountNo`, `Balance`, `AccountType`, `SavingBalance`, `SavingTarget`, `State`) VALUES('$Account_Number', '$Balance', '$Account_Type', '0.0', '', '0')";
-
-            // query execution
-
-            // mysqli_query($conn, $Upload_query) or die(mysqli_error($conn));
-            // mysqli_query($conn, $login_query) or die(mysqli_error($conn));
-            // mysqli_query($conn, $account_query) or die(mysqli_error($conn));
-
-            require '../mail/congraMail.php';
-            // $response = sendMessage($Email, $First_Name);
-            $res = sendMail($First_Name." ".$Last_Name,$Email,"One Time Password",$otp);
-            echo $res;
-            // $_SESSION['username'] = $Username;
         }
     }
 }

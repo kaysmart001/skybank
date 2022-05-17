@@ -517,11 +517,11 @@ $(document).ready(function () {
 
         if (!otp == "") {
 
-            $("#nextBtn").attr('disabled', false);
+            // $("#nextBtn").attr('disabled', false);
             $("#OtpError").text("");
             if (otp.length == 6) {
 
-                $("#nextBtn").attr('disabled', false);
+                // $("#nextBtn").attr('disabled', false);
                 $("#OtpError").text("");
 
                 $.ajax({
@@ -530,7 +530,7 @@ $(document).ready(function () {
                     data: { OTP: otp },
                     success: function (response) {
                         if (response == "Valid") {
-                            $("#nextBtn").attr('disabled', false);
+                            // $("#nextBtn").attr('disabled', false);
                             $("#OtpError").text("");
                         }
                         if (response == "Invalid") {

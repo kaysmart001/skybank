@@ -35,7 +35,7 @@ include "../adminData.php";
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-    <title><?php echo $bank_name ?> Dashboard</title>
+    <title><?php echo $bank_name ?> Withdraw</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!--fontawesome-->
@@ -324,7 +324,7 @@ include "../adminData.php";
                     </li> -->
 
                     <li class="menuHover">
-                        <a href="../admin/cards.php" class="nav-link text-left" role="button">
+                        <a href="../cards.php" class="nav-link text-left" role="button">
                             <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-credit-card ico"></i>Cards Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
                         </a>
                     </li>  

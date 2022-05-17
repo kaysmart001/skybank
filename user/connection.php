@@ -5,15 +5,15 @@
     error_reporting(E_ALL);
      // Defining constant php variable for local host
 
-     define('DB_host', 'skyreliance.org');
-     define('DB_username', 'skyrjrtq_edafe');
-     define('DB_password', 'Greatedafe94.');
-     define('DB_name', 'skyrjrtq_skyreliance');
-
     //  define('DB_host', 'localhost');
-    //  define('DB_username', 'root');
-    //  define('DB_password', 'root');
-    //  define('DB_name', 'SkyBank');
+    //  define('DB_username', 'skyrjrtq_edafe');
+    //  define('DB_password', 'Greatedafe94.');
+    //  define('DB_name', 'skyrjrtq_skyreliance');
+
+     define('DB_host', 'localhost');
+     define('DB_username', 'root');
+     define('DB_password', 'root');
+     define('DB_name', 'SkyBank');
  
 
     // define('DB_host', 'nationalbankplc.org');

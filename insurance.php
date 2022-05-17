@@ -77,10 +77,10 @@
       <div class="container">
         <h1>Insurance</h1>
         <p>Say no to spending hours and days in queue doing<br> the paperwork for your insurance policy. Get your<br>
-          insurance issued with SkyBank instantly
+          insurance issued with <?php echo $bank_name; ?> instantly
         </p>
         <p>The entire process from selecting best insurance<br> to getting it issue just take 10-15 minutes on<br>
-          SkyBank.
+          <?php echo $bank_name; ?>.
         </p>
       </div>
     </section>
