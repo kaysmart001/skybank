@@ -88,7 +88,7 @@ include "bankConfig.php";
           <h1>Make your online banking experience wonderful.</h1>
           <h2>Let’s Begin this beautiful journey </h2>
           <div class="heroBtn">
-            <div><a href="user/CreateAccount.php" class="btn-get-started scrollto">Get Started</a></div>
+            <div><a href="user/register.php" class="btn-get-started scrollto">Get Started</a></div>
             <!-- <div><a href="#" class="btn-get-started scrollto" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">&nbsp &nbsp &nbsp Login &nbsp &nbsp &nbsp</a></div>
           </div> -->
