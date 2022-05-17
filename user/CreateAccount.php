@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $Birth_Date = $_SESSION['C_Birth_Date'];
     $Email = $_SESSION['C_Email'];
     $Pincode = $_SESSION['C_Pincode'];
-    $ProfileColor = $_SESSION['ProfileColor'];
+    $hex = $_SESSION['ProfileColor'];
     $Gender = $_SESSION['Gender'];
     $Username = $_SESSION['Username'];
     $hashPass = $_SESSION['hashPass'];
@@ -23,12 +23,12 @@ if (isset($_POST['submit'])) {
             customer_detail(`Account_No`, `C_First_Name`, `C_Last_Name`, `C_Father_Name`, `C_Mother_Name`, `C_Birth_Date`, /*C_Adhar_No, C_Pan_No,*/ `C_Mobile_No`, `C_Email`, `C_Pincode`, `C_Adhar_Doc`, `C_Pan_Doc`, `ProfileColor`, `Gender`, `ProfileImage`, `Bio`)
             VALUES('$Account_Number', '$First_Name', '$Last_Name', '', '', '$Birth_Date', '', '$Email', '$Pincode', '', '', '$hex', 'Not Availabel', '', '')";
 
-
+        // $hex = $hex;
         // sql query for login table
-        $login_query = "INSERT INTO login(`AccountNo`, `Username`, `Password`, `Status`, `State`) VALUES('$Account_Number', '$Username', '$hashPass', '$Account_Status', '0')";
+        $login_query = "INSERT INTO login(`AccountNo`, `Username`, `Password`, `Status`, `State`) VALUES('$Account_Number', '$Username', '$hashPass', 'Inactive', '0')";
 
         // sql query for Accounts table
-        $account_query = "INSERT INTO accounts(`AccountNo`, `Balance`, `AccountType`, `SavingBalance`, `SavingTarget`, `State`) VALUES('$Account_Number', '$Balance', '$Account_Type', '0.0', '', '0')";
+        $account_query = "INSERT INTO accounts(`AccountNo`, `Balance`, `AccountType`, `SavingBalance`, `SavingTarget`, `State`) VALUES('$Account_Number', '0.0', '$Account_Type', '0.0', '', '0')";
 
         // query execution
         mysqli_query($conn, $Upload_query) or die(mysqli_error($conn));
@@ -42,7 +42,10 @@ if (isset($_POST['submit'])) {
             <li>Username: ".$Username."</li>
             </ul>
         ");
-        header("Location: ../user/login.php?success= Sign up successful!");
+        if ($res) {
+            header("Location: ../user/login.php?success= Sign up successful!");
+            header("Location: ../user/register.php?error= Wrong OTP code supplied!");
+        }
         exit();
     } else {
         header("Location: ../user/register.php?error= Wrong OTP code supplied!");
