@@ -16,24 +16,24 @@ function sendMail($name, $email, $subject, $body)
 {
     // $response = "";
 
-    $mail = new PHPMailer(true);
-    
+    // $mail = new PHPMailer(true);
+
     // SMTP settings
-    $mail->isSMTP();
-    $mail->SMTPDebug = 2;
-    $mail->Host = "localhost";
-    $mail->SMTPAuth = true;
-    $mail->Username = "admin@skyreliance.org";
-    $mail->Password = "Greatedafe94.";
-    $mail->Port = 465;
-    $mail->SMTPOptions = array(
-        'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-        )
-    );
-    $mail->SMTPSecure = "tls";
+    // $mail->isSMTP();
+    // $mail->SMTPDebug = 2;
+    // $mail->Host = "localhost";
+    // $mail->SMTPAuth = true;
+    // $mail->Username = "admin@skyreliance.org";
+    // $mail->Password = "Greatedafe94.";
+    // $mail->Port = 465;
+    // $mail->SMTPOptions = array(
+    //     'ssl' => array(
+    //         'verify_peer' => false,
+    //         'verify_peer_name' => false,
+    //         'allow_self_signed' => true
+    //     )
+    // );
+    // $mail->SMTPSecure = "tls";
 
     // SMTP settings
     // $mail->isSMTP();
@@ -45,17 +45,41 @@ function sendMail($name, $email, $subject, $body)
     // $mail->SMTPSecure = "tls";
 
     // Email settings
-    $mail->isHTML(true);
-    $mail->setFrom("admin@skyreliance.org", $name);
-    $mail->addAddress($email);
-    $mail->Subject = $subject;
-    $mail->Body = $body;
+    // $mail->isHTML(true);
+    // $mail->setFrom("admin@skyreliance.org", $name);
+    // $mail->addAddress($email);
+    // $mail->Subject = $subject;
+    // $mail->Body = $body;
 
-    if ($mail->send()) {
-        return "Success";
-    } else {
-        return $mail->ErrorInfo;
-    }
+    // if ($mail->send()) {
+    //     return "Success";
+    // } else {
+    //     return $mail->ErrorInfo;
+    // }
+
+    $to = $email;
+    $subject = $subject;
+    $txt = $body;
+    $email = 'admin@skyreliance.org';
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+    $message = "
+<html>
+<head>
+<title>" . $subject . "</title>
+</head>
+<body>
+<p>This is your OTP: " . $txt . ", do not share it with any body!</p>
+</body>
+</html>
+";
+
+    $headers .= "From: " . $email . "\r\n";
+
+    mail($to, $subject, $message, $headers);
+
+    header('location:contact.php');
 }
 
 

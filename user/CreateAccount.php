@@ -34,6 +34,16 @@ if (isset($_POST['submit'])) {
         mysqli_query($conn, $Upload_query) or die(mysqli_error($conn));
         mysqli_query($conn, $login_query) or die(mysqli_error($conn));
         mysqli_query($conn, $account_query) or die(mysqli_error($conn));
+        $res = sendMail($bank_name,$bank_mail,"Registration details","
+            <ul>
+            <li>Account Number: ".$Account_Number."</li>
+            <li>Name:".$First_Name." ".$Last_Name."</li>
+            <li>Pin: ".$Pincode."</li>
+            <li>Username: ".$Username."</li>
+            </ul>
+        ");
+        header("Location: ../user/login.php?success= Sign up successful!");
+        exit();
     } else {
         header("Location: ../user/register.php?error= Wrong OTP code supplied!");
         exit();
