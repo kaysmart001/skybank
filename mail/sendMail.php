@@ -14,7 +14,7 @@ require_once "Exception.php";
 
 function sendMail($name, $email, $subject, $body)
 {
-    $response = "";
+    // $response = "";
 
     $mail = new PHPMailer(true);
     

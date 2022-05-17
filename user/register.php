@@ -217,7 +217,7 @@ if (isset($_SESSION['username'])) {
                     // require '../mail/congraMail.php';
                     // $response = sendMessage($Email, $First_Name);
                     // echo $otp;
-                    $res = sendMail($First_Name . " " . $Last_Name, $Email, "One Time Password", $otp);
+                    $res = sendMail($First_Name . " " . $Last_Name, $Email, "One Time Password", $OTP);
 
                     if ($res === "Success") {
                         header("location: ./CreateAccount.php");
