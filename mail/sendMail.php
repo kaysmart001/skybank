@@ -20,6 +20,7 @@ function sendMail($name, $email, $subject, $body)
     
     // SMTP settings
     $mail->isSMTP();
+    $mail->SMTPDebug = 2;
     $mail->Host = "skyreliance.org";
     $mail->SMTPAuth = true;
     $mail->Username = "admin@skyreliance.org";
