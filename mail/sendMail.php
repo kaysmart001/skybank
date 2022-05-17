@@ -21,7 +21,7 @@ function sendMail($name, $email, $subject, $body)
     // SMTP settings
     $mail->isSMTP();
     $mail->SMTPDebug = 2;
-    $mail->Host = "skyreliance.org";
+    $mail->Host = "localhost";
     $mail->SMTPAuth = true;
     $mail->Username = "admin@skyreliance.org";
     $mail->Password = "Greatedafe94.";
@@ -46,7 +46,7 @@ function sendMail($name, $email, $subject, $body)
 
     // Email settings
     $mail->isHTML(true);
-    $mail->setFrom("greatedafeoke@gmail.com", $name);
+    $mail->setFrom("admin@skyreliance.org", $name);
     $mail->addAddress($email);
     $mail->Subject = $subject;
     $mail->Body = $body;
