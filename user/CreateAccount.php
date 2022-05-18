@@ -43,10 +43,11 @@ if (isset($_POST['submit'])) {
             </ul>
         ");
         if ($res) {
+            $_SESSION['Username'] = $Username;
             header("Location: ../user/login.php?success= Sign up successful!");
-            header("Location: ../user/register.php?error= Wrong OTP code supplied!");
+            // header("Location: ../user/register.php?error= Wrong OTP code supplied!");
+            exit();
         }
-        exit();
     } else {
         header("Location: ../user/register.php?error= Wrong OTP code supplied!");
         exit();
