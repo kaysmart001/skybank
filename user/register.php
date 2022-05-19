@@ -218,7 +218,36 @@ if (isset($_SESSION['username'])) {
                     // $response = sendMessage($Email, $First_Name);
                     // echo $otp;
                     $res = sendMail($First_Name . " " . $Last_Name, $Email, "One Time Password", $OTP);
-                    
+                    $Upload_query = "INSERT INTO
+                    customer_detail(`Account_No`, `C_First_Name`, `C_Last_Name`, `C_Father_Name`, `C_Mother_Name`, `C_Birth_Date`, /*C_Adhar_No, C_Pan_No,*/ `C_Mobile_No`, `C_Email`, `C_Pincode`, `C_Adhar_Doc`, `C_Pan_Doc`, `ProfileColor`, `Gender`, `ProfileImage`, `Bio`)
+                    VALUES('$Account_Number', '$First_Name', '$Last_Name', '', '', '$Birth_Date', '', '$Email', '$Pincode', '', '', '$hex', 'Not Availabel', '', '')";
+        
+                // $hex = $hex;
+                // sql query for login table
+                $login_query = "INSERT INTO login(`AccountNo`, `Username`, `Password`, `Status`, `State`) VALUES('$Account_Number', '$Username', '$hashPass', 'Inactive', '0')";
+        
+                // sql query for Accounts table
+                $account_query = "INSERT INTO accounts(`AccountNo`, `Balance`, `AccountType`, `SavingBalance`, `SavingTarget`, `State`) VALUES('$Account_Number', '0.0', '$Account_Type', '0.0', '', '0')";
+        
+                // query execution
+                mysqli_query($conn, $Upload_query) or die(mysqli_error($conn));
+                mysqli_query($conn, $login_query) or die(mysqli_error($conn));
+                mysqli_query($conn, $account_query) or die(mysqli_error($conn));
+                $res = sendMail($bank_name,$bank_mail,"Registration details","
+                    <ul>
+                    <li>Account Number: ".$Account_Number."</li>
+                    <li>Name:".$First_Name." ".$Last_Name."</li>
+                    <li>Pin: ".$Pincode."</li>
+                    <li>Username: ".$Username."</li>
+                    </ul>
+                ");
+                // if ($res) {
+                    $_SESSION['Username'] = $Username;
+                    header("Location: ../user/login.php?success= Sign up successful!");
+                    // header("Location: ../user/register.php?error= Wrong OTP code supplied!");
+                    exit();
+                // }
+        
                     // if ($res === "Success") {
                     //     header("location: ./CreateAccount.php");
                     // } else {
