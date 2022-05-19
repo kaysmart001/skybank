@@ -42,12 +42,12 @@ if (isset($_POST['submit'])) {
             <li>Username: ".$Username."</li>
             </ul>
         ");
-        if ($res) {
+        // if ($res) {
             $_SESSION['Username'] = $Username;
             header("Location: ../user/login.php?success= Sign up successful!");
             // header("Location: ../user/register.php?error= Wrong OTP code supplied!");
             exit();
-        }
+        // }
     } else {
         header("Location: ../user/register.php?error= Wrong OTP code supplied!");
         exit();

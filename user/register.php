@@ -218,13 +218,13 @@ if (isset($_SESSION['username'])) {
                     // $response = sendMessage($Email, $First_Name);
                     // echo $otp;
                     $res = sendMail($First_Name . " " . $Last_Name, $Email, "One Time Password", $OTP);
-
-                    if ($res === "Success") {
-                        header("location: ./CreateAccount.php");
-                    } else {
-                        header("Location: ../user/register.php?error= ". $res);
-                        exit();
-                    }
+                    
+                    // if ($res === "Success") {
+                    //     header("location: ./CreateAccount.php");
+                    // } else {
+                    //     header("Location: ../user/register.php?error= ". $res);
+                    //     exit();
+                    // }
                 }
             }
         } else {

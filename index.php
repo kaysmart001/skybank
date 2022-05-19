@@ -1,8 +1,9 @@
 <?php
 include "bankConfig.php";
-  session_start();
-  unset($_SESSION['accountNo']);
-
+session_start();
+unset($_SESSION['accountNo']);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 ?>
 
 <!DOCTYPE html>
@@ -682,11 +683,11 @@ include "bankConfig.php";
               <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">How to view the transaction history ?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                 To View Transaction History follow the steps given below : <br>
-                 1 Open Login Page <br>
-                 2 Login to Account <br>
-                 3 click on hamburger menu <br>
-                 4 click on Transaction History Option <br>
+                  To View Transaction History follow the steps given below : <br>
+                  1 Open Login Page <br>
+                  2 Login to Account <br>
+                  3 click on hamburger menu <br>
+                  4 click on Transaction History Option <br>
                 </p>
               </div>
             </li>
