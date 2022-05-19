@@ -22,7 +22,7 @@ $(document).ready(function () {
                 $("#NamePlate").text(response.FName + " " + response.LName);
                 $("#NameTag").text(response.TagName);
                 $("#ProfileTag").css("background-color", response.ProfileColor);
-                $("#BalanceDisplay").text("$"+response.Balance + " ₹");
+                $("#BalanceDisplay").text("$"+response.Balance);
                 $("#SavingDisplay").text("$"+response.SavingBalance);
                 $("#AcNo").text(response.AccountNo);
                 $("#AcType").text(response.AccountType);

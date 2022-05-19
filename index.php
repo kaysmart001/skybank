@@ -803,6 +803,7 @@ ini_set('display_startup_errors', 1);
               India <br><br> -->
               <?php echo $bank_address; ?>
               <strong>Phone:</strong> <?php echo $bank_number; ?><br>
+              <strong>Whatsapp:</strong> <?php echo $bank_whatsapp; ?><br>
               <strong>Email:</strong> <?php echo $bank_mail; ?><br>
             </p>
           </div>
