@@ -729,7 +729,7 @@ include "bankConfig.php";
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>Smt.Sharachchandrika Suresh Patil Institute of <br> Technology(Polytechnin), Chopda</p>
+              <p><?php echo $bank_address; ?></p>
             </div>
           </div>
 
@@ -737,7 +737,7 @@ include "bankConfig.php";
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>contact@example.com</p>
+              <p><?php echo $bank_mail; ?></p>
             </div>
           </div>
 
@@ -745,7 +745,7 @@ include "bankConfig.php";
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
+              <p><?php echo $bank_number; ?></p>
             </div>
           </div>
 
