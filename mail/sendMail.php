@@ -83,6 +83,6 @@ function sendMail($name, $email, $subject, $body)
     if ($res) {
         return "Success";
     }else{
-        return false;
+        return $res;
     }
 }
