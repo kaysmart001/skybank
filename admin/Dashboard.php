@@ -1,4 +1,10 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 session_start();
 if (!isset($_SESSION['accountNo'])) {
     header("Location: ../user/login.php");
@@ -9,16 +15,16 @@ include '../user/connection.php';
 include "../admin/Notification.php";
 include "../admin/adminData.php";
 
-$TotalCustomer = mysqli_query($conn, " SELECT * FROM customer_detail");
+$TotalCustomer = mysqli_query($conn, " SELECT * FROM customer_detail") or die("1");
 $TotalCustomer = mysqli_num_rows($TotalCustomer);
 
-$ActiveAccount = mysqli_query($conn, " SELECT * FROM login where Status = 'Active' ");
+$ActiveAccount = mysqli_query($conn, " SELECT * FROM login where Status = 'Active' ") or die("2");
 $ActiveAccount = mysqli_num_rows($ActiveAccount);
 
-$InactiveAccount = mysqli_query($conn, " SELECT * FROM login where Status = 'inactive' ");
+$InactiveAccount = mysqli_query($conn, " SELECT * FROM login where Status = 'inactive' ") or die("3");
 $InactiveAccount = mysqli_num_rows($InactiveAccount);
 
-$DeactiveAccount = mysqli_query($conn, " SELECT * FROM login where Status = 'Deactivated' ");
+$DeactiveAccount = mysqli_query($conn, " SELECT * FROM login where Status = 'Deactivated' ") or die("4");
 $DeactiveAccount = mysqli_num_rows($DeactiveAccount);
 
 $query = "SELECT
@@ -30,7 +36,7 @@ GROUP BY
 DATE(Create_Date)
 ";
 
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $query) or die("5");
 $date = array();
 $data = array();
 
@@ -118,12 +124,12 @@ GROUP BY
             font-weight: bold;
             text-align: center;
         }
+
         @media (max-width: 768px) {
-            .ShowHide{
+            .ShowHide {
                 display: none;
             }
         }
-
     </style>
 
 
@@ -252,7 +258,7 @@ GROUP BY
                             <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-credit-card ico"></i>Cards Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
                         </a>
                     </li>
-                    
+
                     <li class="menuHover">
                         <a href="../admin/loans.php" class="nav-link text-left" role="button">
                             <i class="flaticon-bar-chart-1"></i> <i class="bx bxs-credit-card ico"></i>Loans Requests <span class="badge badge-success" style="font-size: 12px; margin-left: 50px;"> <?php echo $debitNotify; ?> new</span>
@@ -327,7 +333,7 @@ GROUP BY
                                             <div class="input-group-append">
                                                 <button type="button">
                                                     <i class="bx bxs-user-pin ico"></i>
-<!-- 
+                                                    <!-- 
                                                     <i class="btn btn-primary" class="fas fa-user fa-sm"></i>
                                                 </button> -->
                                             </div>
@@ -500,7 +506,7 @@ GROUP BY
                                                     <div class="col-sm-12">
                                                         <div class="card gray_bg">
                                                             <div class="card-body card-shadow">
-                                        
+
                                                                 <div class="d-flex justify-content-center">
                                                                     <a role="button" href="../admin/accounts/EditAccount.php" class="btn text-decoration-none btn-custo mt-3 mb-3"><i class='bx bxs-pencil'></i> Edit Account</a>
                                                                 </div>
@@ -511,7 +517,7 @@ GROUP BY
                                                     <div class="col-sm-12">
                                                         <div class="card gray_bg">
                                                             <div class="card-body card-shadow">
-                                    
+
                                                                 <div class="d-flex justify-content-center">
                                                                     <a role="button" href="../admin/accounts/ActivateAccount.php" class="btn text-decoration-none btn-custo mt-3 mb-3"><i class='bx bx-power-off'></i> Activate Account</a>
                                                                 </div>
@@ -777,7 +783,7 @@ GROUP BY
             },
             options: {
 
-                responsive:true,
+                responsive: true,
             }
         });
     </script>
