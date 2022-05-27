@@ -12,12 +12,12 @@
     $mail->SMTPAuth=true;
     $mail->SMTPSecure='tls';
 
-    $mail->Username = 'Enter Your Email';
+    $mail->Username = 'admin@skyreliance.org';
     $mail->Password='Enter Your app password';
 
-    $mail->setFrom("Enter Your Email", "Sky Bank");
-    $mail->addAddress("Enter Your Email");
-    $mail->addReplyTo("Enter Your Email");
+    $mail->setFrom("admin@skyreliance.org", "Skyreliance");
+    $mail->addAddress("admin@skyreliance.org");
+    $mail->addReplyTo("admin@skyreliance.org");
 
     $mail->isHTML(true);
     $mail->Subject="$subject";

@@ -750,6 +750,14 @@ ini_set('display_startup_errors', 1);
             </div>
           </div>
 
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bxl-whatsapp"></i>
+              <h3>Whatsapp</h3>
+              <p><?php echo $bank_number; ?></p>
+            </div>
+          </div>
+
         </div>
 
         <div class="row">
@@ -813,7 +821,7 @@ ini_set('display_startup_errors', 1);
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="about.php">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="../SkyBank/#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="terms.php">Terms of service</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="privacypolicy.php">Privacy policy</a></li>
             </ul>
@@ -863,6 +871,7 @@ ini_set('display_startup_errors', 1);
           <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="call:<?php echo $bank_whatsapp; ?>" class="linkedin"><i class="bx bxl-whatsapp"></i></a>
         </div>
       </div>
 
