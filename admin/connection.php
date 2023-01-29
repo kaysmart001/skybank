@@ -7,10 +7,10 @@
     // define('DB_password', 'root');
     // define('DB_name', 'SkyBank');
 
-    define('DB_host', 'localhost');
-    define('DB_username', 'skyrjrtq_admin');
-    define('DB_password', 'Greatedafe94.');
-    define('DB_name', 'skyrjrtq_skyreliance');
+    define('DB_host', 'sql311.epizy.com');
+    define('DB_username', 'epiz_33459705');
+    define('DB_password', 'hvZgW4p2guu7');
+    define('DB_name', 'epiz_33459705_banking_db');
 
     $conn = mysqli_connect(DB_host, DB_username, DB_password, DB_name);
 
