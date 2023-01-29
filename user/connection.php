@@ -5,10 +5,10 @@
     error_reporting(E_ALL);
      // Defining constant php variable for local host
 
-     define('DB_host', 'localhost');
-     define('DB_username', 'skyrjrtq_edafe');
-     define('DB_password', 'Greatedafe94.');
-     define('DB_name', 'skyrjrtq_skyreliance');
+     define('DB_host', 'sql311.epizy.com');
+     define('DB_username', 'epiz_33459705');
+     define('DB_password', 'hvZgW4p2guu7');
+     define('DB_name', 'epiz_33459705_banking_db');
 
     //  define('DB_host', 'localhost');
     //  define('DB_username', 'root');
